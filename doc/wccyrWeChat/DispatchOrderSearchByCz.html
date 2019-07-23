@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>车主页面_我的订单</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+	<link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <link rel="stylesheet" href="../../css/example.css">
+    <link rel="stylesheet" href="../../css/index.css">
+	
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js"></script>
+    <script type="text/javascript" src="../../js/public/jquery.validate.js"></script>
+    <!-- layer -->
+    <script type="text/javascript" src="../../js/public/layer.js"></script>
+    <script type="text/javascript" src="../../js/DispatchOrderSearchByCz.js?v=11"></script>
+    <script type="text/javascript" src="../../js/telConfig.js"></script>
+    <style>
+        #bottomTobar #toDriver{
+            background: #fff;
+        }
+        .dispathStatusWait{
+            color:green;
+        }
+        .dispathStatusOver{
+            color:blue;
+        }
+        .list{
+            display: none;
+        }
+    </style>
+</head>
+
+<body ontouchstart class="h100">
+    <div id="container" class="h100">
+        <div class="h100 navbar js_show">
+            <div class="page__bd" >
+                <div class="weui-tab">
+                    <div class="weui-navbar">
+                        <!--<div class="weui-navbar__item weui-bar__item_on" id="dingdan">-->
+                        <!--我的订单-->
+                        <!--</div>-->
+                        <div class="weui-navbar__item" id="lishi">
+                            历史订单
+                        </div>
+                    </div>
+                    <div class="weui-tab__panel" style="background-color: #EEEEEE">
+                        <div class="weui-form-preview weui-form-preview-whitebg" id="dispatchOrder">
+                           <div class="list">
+                               <div class="weui-form-preview__bd" >
+                                   <div class="weui-form-preview__item">
+                                       <label class="weui-form-preview__label weui-form-preview__label-dark">状态</label>
+                                       <span class="weui-form-preview__value dispathStatus">{0}</span>
+                                   </div>
+                                   <div class="weui-form-preview__item">
+                                       <label class="weui-form-preview__label weui-form-preview__label-dark">发货地</label>
+                                       <span class="weui-form-preview__value">{1}</span>
+                                   </div>
+                                   <div class="weui-form-preview__item">
+                                       <label class="weui-form-preview__label weui-form-preview__label-dark">到货地</label>
+                                       <span class="weui-form-preview__value">{2}</span>
+                                   </div>
+                                   <div class="weui-form-preview__item">
+                                       <label class="weui-form-preview__label weui-form-preview__label-dark">装货时间</label>
+                                       <span class="weui-form-preview__value">{3}</span>
+                                   </div>
+                                   <div class="weui-form-preview__item">
+                                       <label class="weui-form-preview__label weui-form-preview__label-dark">货重</label>
+                                       <span class="weui-form-preview__value">{4}</span>
+                                   </div>
+                                   <div class="weui-form-preview__item">
+                                       <label class="weui-form-preview__label weui-form-preview__label-dark">超长超宽</label>
+                                       <span class="weui-form-preview__value">{5}</span>
+                                   </div>
+                                   <div class="weui-form-preview__item">
+                                       <label class="weui-form-preview__label weui-form-preview__label-dark">运费</label>
+                                       <span class="weui-form-preview__value">{6}</span>
+                                   </div>
+                               </div>
+                               <div class="weui-form-preview__ft">
+                                   <a type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary"  name="tel" href="javascript:"style="border-bottom: 1px solid  #888;" >联系客服</a>
+                                   <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:" style="border-bottom: 1px solid  #888;">电子合同</a>
+                                   <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:" style="border-bottom: 1px solid  #888;">支付保证金</a>
+                               </div>
+                           </div>
+                            <div class="text-center">暂未查询到历史订单</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="button js_show page__bd_spacing fixed-bottom KYbutton">-->
+                <!--<div class="text-center">-->
+                    <!--<div><i class="iconfont icon-fanhui"></i>返回</div>-->
+                <!--</div>-->
+                <!--<div class="text-center centerList">-->
+                    <!--<div class="mainBtn">-->
+                        <!--<span>抢单</span>-->
+                    <!--</div>-->
+                    <!--<div id="parentList">-->
+                        <!--<div class="childList">抢单</div>-->
+                        <!--<div class="childList">我的订单</div>-->
+                        <!--<div class="childList">抢单</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="text-center">-->
+                    <!--<div><i class="iconfont icon-gerenzhongxin"></i>个人中心</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="button js_show page__bd_spacing fixed-bottom KYbutton">-->
+                <!--<a href="javascript:;" class="weui-btn weui-btn_primary " id="keyongchaxun">可用订单查询</a>-->
+                <!--<a href="javascript:;" class="weui-btn weui-btn_plain-default " id="grzx">个人中心</a>-->
+            <!--</div>-->
+
+        </div>
+    </div>
+</body>
+
+</html>

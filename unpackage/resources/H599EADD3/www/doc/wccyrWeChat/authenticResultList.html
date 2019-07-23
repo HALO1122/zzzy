@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+        <title>认证结果</title>
+		<link rel="stylesheet" href="../../css/weui.min.css">
+		<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+		<link rel="stylesheet" href="../../css/weChat_dqq.css">
+
+        <style>
+            .weui-cell_access{
+                border:1px solid;
+                margin:1rem;
+            }
+            .error{
+                border-color: red;
+            }
+            .error .weui-cell__ft{
+                color: red;
+            }
+            .success{
+                border-color: green;
+            }
+            .success .weui-cell__ft{
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <!--认证结果列表-->
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access info success" href="javascript:;">
+                <div class="weui-cell__bd weui-cell_primary">
+                    <p>公司车队主认证</p>
+                </div>
+                <span class="weui-cell__ft">成功</span>
+            </a>
+            <a class="weui-cell weui-cell_access info error" href="javascript:;">
+                <div class="weui-cell__bd weui-cell_primary">
+                    <p>货主认证</p>
+                </div>
+                <span class="weui-cell__ft">失败</span>
+            </a>
+        </div>
+		<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="../../js/public/utils.js"></script>
+        <script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=" +Date.parse(new Date())></script>
+        <script type="text/javascript" src="../../js/authenticResultList.js?t=" +Date.parse(new Date())></script>
+    </body>
+</html>

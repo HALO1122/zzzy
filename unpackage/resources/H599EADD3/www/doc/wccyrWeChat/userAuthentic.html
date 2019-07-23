@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>平台注册</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+	<link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <style>
+        ul,li{
+            list-style: none;
+            margin:0;
+            padding: 0;
+        }
+        ul{
+            width:100%;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: .5rem;
+        }
+        li{
+            text-align: center;
+        }
+        li>div{
+            display: inline-block;
+            position: relative;
+        }
+        body,html{
+            height:100%;
+        }
+        label > *{
+            pointer-events : auto;
+        }
+        .grey_top{ position: relative;height:44px; background-color:#f8f8f8; width:100%; text-align:center; line-height:44px; color:#333; font-size:17px; border-bottom:solid 1px #ececec;}
+        .page__bd{background: white;}
+        .close-popup{
+            position: fixed;
+            bottom:0;
+            left:0;
+            width: 100%;
+            display: none;
+            z-index: 500;
+        }
+        .weui-popup__container--visible .close-popup{
+            display: block;
+        }
+        .weui-btn-area{
+            margin:0;
+        }
+        .weui-cells{
+            margin:0;
+        }
+        .J_GetCode{
+            font-size: 12px;
+        }
+        #ftype{
+            text-align: center;
+        }
+        .roleDiv>div{
+            display: none;
+        }
+		.arrowsLeft{
+			height: 30px;
+			border-bottom:1px solid #F4F4F4;
+			font-size: 14px;
+		}
+		.iconLeft{
+			padding: 6px;
+		}
+    </style>
+</head>
+<body >
+    <!--注册账号-->
+    <div class="weui-cells weui-cells_form">
+        <div class="userInfo">
+            <!-- <div class="arrowsLeft">
+            	<img class="iconLeft" src="../../img/left.png" >
+            </div> -->
+			<!--用户名-->
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label validate-required">用户名</label></div>
+                <div class="weui-cell__bd">
+                    <input type="text" id="fuserName" name="fuserName" class="weui-input" isRequired="true" placeholder="请输入用户名">
+                </div>
+            </div>
+            <!--手机号-->
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label validate-required">手机号</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" name="fmobile" isRequired="true" pattern="[0-9]*" placeholder="请输入手机号">
+                </div>
+            </div>
+            <!--身份证图片-->
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label validate-required">身份证：</label></div>
+                <div class="weui-cell__bd">
+                    <ul>
+                        <li imgNum="fidCardFile1">
+                            <div class="weui-uploader__input-box">
+                                <input class="weui-uploader__input" isRequired="true" placeholder="请上传身份证正面照片" type="file" accept="image/*">
+                            </div>
+                            <div class="add_img weui-uploader__file hide"></div>
+                            <p class="validate-required">身份证正面</p>
+                        </li>
+                        <!--<li imgNum="fidCardFile2">-->
+                            <!--<div class="weui-uploader__input-box">-->
+                                <!--<input class="weui-uploader__input" isRequired="true" placeholder="请上传身份证反面照片" type="file" accept="image/*">-->
+                            <!--</div>-->
+                            <!--<div class="add_img weui-uploader__file hide"></div>-->
+                            <!--<p class="validate-required">身份证反面</p>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </div>
+            <!--选择对应角色-->
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label for="ftype" class="weui-label validate-required">请选择角色</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="ftype" name="ftype" value="车主" type="text" readonly="" data-values="2">
+                </div>
+            </div>
+            <div class="weui-cells__title">不带星号是非必填项，但是如果上传图片请填写对应编号。</div>
+        </div>
+        <!--角色对应div-->
+        <div class="roleDiv">
+            <!--驾驶员-->
+            <div class="3">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">相关证件：</label></div>
+                    <div class="weui-cell__bd">
+                        <ul>
+                            <li imgNum="fdrivingFile">
+                                <div class="weui-uploader__input-box">
+                                    <input class="weui-uploader__input" isRequired="true" placeholder="请上传驾驶证照片" type="file" accept="image/*">
+                                </div>
+                                <div class="add_img weui-uploader__file hide"></div>
+                                <p class="validate-required">驾驶证</p>
+                            </li>
+                            <li imgNum="fcyzgzFile">
+                                <div class="weui-uploader__input-box">
+                                    <input class="weui-uploader__input" placeholder="请上传从业资格证" type="file" accept="image/*">
+                                </div>
+                                <div class="add_img weui-uploader__file hide"></div>
+                                <p>从业资格证</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label for="fcyzgzCode" class="weui-label">从业资格证号</label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input" name="fcyzgzCode" id="fcyzgzCode" placeholder="请输入从业资格证号">
+                    </div>
+                </div>
+            </div>
+            <!--车主-->
+            <div class="2 showActive">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">相关证件：</label></div>
+                    <div class="weui-cell__bd">
+                        <ul>
+                            <li imgNum="fbusinessParentFile">
+                                <div class="weui-uploader__input-box">
+                                    <input class="weui-uploader__input" placeholder="请上传营业执照照片" type="file" accept="image/*">
+                                </div>
+                                <div class="add_img weui-uploader__file hide"></div>
+                                <p class="">营业执照</p>
+                            </li>
+                            <li imgNum="fdljyxkzFile">
+                                <div class="weui-uploader__input-box">
+                                    <input class="weui-uploader__input" placeholder="请上传道路经营许可证" type="file" accept="image/*">
+                                </div>
+                                <div class="add_img weui-uploader__file hide"></div>
+                                <p class="">道路经营许可证</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label for="fdepartmentName" class="weui-label">公司名称</label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input" name="fdepartmentName" id="fdepartmentName"  placeholder="请输入公司名称">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label for="fyyzzcode" class="weui-label">营业证号</label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input" name="fyyzzcode" id="fyyzzcode" placeholder="请输入营业证号">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label for="fdljyxkzCode" class="weui-label" style="font-size: 14px">道路经营许可证</label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input" name="fdljyxkzCode" id="fdljyxkzCode" placeholder="请输入道路经营许可证号">
+                    </div>
+                </div>
+            </div>
+            <!--货主-->
+            <div class="1">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">相关证件：</label></div>
+                    <div class="weui-cell__bd">
+                        <ul>
+                            <li imgNum="fbusinessParentFile">
+                                <div class="weui-uploader__input-box">
+                                    <input class="weui-uploader__input" placeholder="请上营业执照照片" type="file" accept="image/*">
+                                </div>
+                                <div class="add_img weui-uploader__file hide"></div>
+                                <p class="">营业执照</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label for="fdepartmentName2" class="weui-label">公司名称</label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input" name="fdepartmentName2" id="fdepartmentName2"  placeholder="请输入公司名称">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label for="fyyzzcode2" class="weui-label">营业证号</label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input" name="fyyzzcode2" id="fyyzzcode2"  placeholder="请输入营业证号">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--验证码-->
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label validate-required">验证码</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="yzm" name="yzm" type="tel" isRequired="true" placeholder="请输入验证码">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-btn weui-btn_default J_GetCode">获取验证码</button>
+            </div>
+        </div>
+        <!--平台管理规范-->
+        <label for="weuiAgree" class="weui-agree">
+            <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">
+                阅读并同意
+                <a href="javascript:void(0);">
+                    <span id="platformSrand" class="open-popup" data-target="">《万里无车承运人平台管理规范》</span>
+                </a>
+            </span>
+        </label>
+        <!--上传的照片查看-->
+        <div class="weui-gallery" id="modal">
+            <!--照片查看-->
+            <span class="weui-gallery__img" ></span>
+            <input type="hidden">
+            <div class="weui-gallery__opr">
+                <a href="javascript:" class="weui-gallery__del">
+                    <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+                </a>
+            </div>
+        </div>
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary submit" href="javascript:" >注册</a>
+        </div>
+    </div>
+    <div id="about" class="weui-popup__container">
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal">
+            <div class="page preview js_show">
+                <div class="page__bd">
+                    <div class="grey_top">
+                        <a href="#" class=""></a> 平台使用规范
+                        <a href="#" class=""></a>
+                    </div>
+                    <div class="page__bd">
+                        <article class="weui-article">
+                            <section>
+                                <h2 class="title">本文是您与运营方（将在下文中定义）之间订立的法律合同。除非您同意接受本许可协议所有条款之约束，否则不得安装、复制或者使用《中中无车承运人平台》。在您注册成为《中中无车承运人平台》用户前，详细阅读本许可协议的所有内容。用户确认：只要您点击“接受”或“同意”按钮注册成为《中中无车承运人平台》用户或者在注册后进入《中中无车承运人平台》平台，即表明您在注册前已经进行认真阅读并同意无条件接受本许可协议、《中中无车承运人平台使用条款》以及中中公司不时公布的各项“其他公开规则”的约束。如果发生纠纷，您不得以未仔细阅读为由实行抗辩。如您不同意接受本许可协议，请点击“拒绝”或者“不同意”按钮并不要安装或使用本平台程序或服务。</h2>
+                                <h2 class="title">下述作品的著作权归河南中中信息技术有限公司，其关联公司及其他许可方，（统称为“中中公司”）所有：《中中无车承运人平台》程序软件、任何由运营方（定义如下）或中中公司通过在线传送或其他方式交付给您的用以修补、更新或修改程序软件的相关任何文件、任何印刷材料及在线或电子文档（“用户手册”）及其他所有该程序软件和/或用户手册（与下文所定义的“平台客户端”统称为“平台”）的平台或衍生产品。许昌中中物联科技有限公司（统称为“运营方”）已获中中公司授权，在中华人民共和国境内（不包括香港特别行政区，澳门特别行政区和台湾）（以下简称为“区域”）独立并独家运营平台。任何对平台的使用必须遵守本最终用户许可协议（“本许可协议”或“本协议”）。您需满足以下条件方可使用本平台：在平台在线平台服务（“服务”）上注册账号，并一直遵守《平台使用条款》。本平台仅向遵守本协议且已经获得授权的最终用户使用。非本许可协议明文规定而使用、复制、修改或发行平台的行为均被明确禁止。</h2>
+                                <section>
+                                    <h3>1.许可权利的授予。</h3>
+                                    <p>
+                                        如果您接受本许可协议，您将被允许安装《中中无车承运人平台》网络平台计算机软件（以下称为“客户端”）至您的电脑或手机上。未经许可，以其他任何形式安装、使用、访问、显示、运营《中中无车承运人平台》平台，都将被视为违反本许可协议。在您同意本许可协议内容并持续遵守本协议规定的前提下，运营方在此授予您一个有限且非排他的许可：（a）允许在多台合法设备上登录并使用平台；并且（b）可对服务及平台客户端进行非商业目的的使用。平台客户端的使用应遵循本许可协议，您在使用平台前必须接受该等许可协议。
+                                    </p>
+
+                                </section>
+                                <section>
+                                    <h3>2.服务及《使用条款》</h3>
+                                    <p>
+                                        如上所述，您必须接受本协议、《平台使用条款》方可通过服务运行平台。如果您不同意本协议、《平台使用条款》，则您不可注册账号运行平台。
+                                    </p>
+                                </section>
+                                <section>
+                                    <h3>3.所有权。</h3>
+                                    <p>
+                                        A． 中中公司拥有《中中无车承运人平台》平台及其产品（包括但不仅限于平台名称、计算机代码、主题、物品、运行方式、相关文档、向运营方或中中公司所提供的个人信息数据（包括但不仅限于账号数据、客户服务历史、角色信息、平台内的平台记录）的全部权利、所有权以及知识产权。您在此同意并认可，运营方有权将本条款中所指的数据提供、透露或转移至运营方的关联公司；另外，运营方有权将前述数据提供、透露或转移至中中公司和/或其关联公司及他们各自的被许可方和许可方（他们可能位于区域之外）。您在此同意运营方提供、透露或转移在本日期前已产生的任何数据。平台受中国版权法、国际版权公约及其他法律的保护。中中公司保留所有权利。运营方拥有平台在区域内的独家运营权。平台可能含有第三方许可的内容，如发现违反本协议的行为，该第三方许可人可能会行使其应有的权利。
+                                    </p>
+                                </section>
+                                <section>
+                                    <h3>4.最终用户的责任。</h3>
+                                    <p>A． 根据本许可协议的约定，您不得对平台进行全部或部分地拷贝、影印、仿造、翻译、反向工程、导出源代码、修改、反汇编、反编译、开发衍生产品或者删除在平台上的任何专有权利之告示或标签。如您违反本条所含的限制性条款，将导致您的许可权利被立即自动终止，且您有可能需要承担民事和/或刑事责任。尽管有上述规定，若是仅为存档目的，您可以制作一份“用户手册”的副本。</p>
+                                    <p>B． 在任何情况下，您保证不从事以下行为：</p>
+                                    <p>(i) 以任何未得到明确授权的方式，出售平台或在其上设定担保利益或向他人转让其复制品，或者向他人租赁、出租、许可使用平台。</p>
+                                    <p>(ii) 为任何商业之目的（包括但不限于未经运营方明确的书面同意，在网吧、计算机平台中心或任何其他定位地点使用之目的），使用平台或其任何部分，包括但不限于平台客户端。</p>
+                                    <p>(iii) 出于任何目的（包括但不限于通过互联网、商业性或者非商业行平台局域网实行联网对战或作为内容聚合网络之部分等目的），通过各种方法（包括但不仅限于：协议模拟、加密链路、封包窃听、修改平台、为平台添加新的组件或利用目前已知或者将来开发的应用程序或技术）搭建平台主机，提供、开发配对服务或截留、模拟或重定向运营方使用的通信协议。</p>
+                                    <p>(iv) 协助、创建或维护任何未经授权的连接到平台或者服务的链接，包括但不限于任何连接到任意一个模仿或试图模仿服务的未经授权的服务器。所有连接到平台和/服务的链接，不论是由平台客户端还是由其他工具创设的，只能通过运营方明确许可的方式创建。除非是中中公司和/或运营方明确提供作为公用的界面，否则，在任何情况下，您均不得连接或制造工具使您或他人连接至平台专有界面。</p>
+                                </section>
+                                <section>
+                                    <h3>5.同意监控。</h3>
+                                    <p>在运行时，程序可监视您电脑的随机存储内存（RAM）以识别与程序同时运行的未经授权的第三方程序。本条中所称的 “未经授权的第三方程序”是指经运营方和/或中中公司独立判断，符合以下任一特征的第三方软件；</p>
+                                    <p>（i）实现或者协助作弊或者同类行为；</p><p>(ii)以未经中中公司和/或运营方明确许可的方式，让用户修改或非法入侵平台界面、环境或者平台体验；
+                                </p><p>或（iii）拦截、 “挖取（MINE）”或其他方式从平台中或通过平台收集信息。“未经授权的第三方程序” 包括但不限于“附件程序”（ADDON）、“黑客程序”（HACK）等。一旦发现未经授权的第三方程序，程序将向运营方和/或中中公司回馈有关信息，包括但不限于您的账户名、所发现的未经许可的第三方程序的详细信息、发现的时间和日期，运营方将采取合理的措施打击该未经授权的行为。</p>
+                                </section>
+                                <section>
+                                    <h3>6.终止</h3>
+                                    <p>您有权根据自身独立决定，随时通过如下方式终止本许可协议：</p>
+                                    <p>（i）永久销毁您所拥有的或在您控制下的所有的平台软件及其副本；</p>
+                                    <p>（ii）将平台客户端从您硬盘驱动上移除；</p>
+                                    <p>（iii）通知运营方您要终止本协议的意图。运营方可根据自身的商业策略，随时终止本协议。在这种情况下，您必须立即且永久地销毁您所拥有的或在您控制下的所有的平台及其副本并且将平台客户端从您硬
+                                        盘驱动上移除。本协议终止之后，根据本协议所授予的许可将即时终止。</p>
+                                    <p>为免争议，您在此同意以运营方系统所记载的数据作为判断与本协议相关的所有技术问题的依据。运营方保证该数据的真实性。除非</p>
+                                    <p>（i）政府有关部门要求；</p>
+                                    <p>（ii）本协议约定（包括但不仅限于运营方根据本协议将其系统所记载的数据提供、透露给中中公司）；或</p>
+                                    <p>（iii）其他公开的政策或规定的要求，包括不仅限于隐私政策，否则，运营方不会将上述数据透露给任何人。</p>
+                                </section>
+                                <section>
+                                    <h3>7.补丁程序与更新程序。</h3>
+                                    <p>中中公司和/或运营方可布置或提供平台的补丁程序、更新程序和修正程序，用户必须安装这些程序才可继续使用平台。中中公司和/或运营方可以远程更新平台，包括但不限于更新您的电脑中安装的平台。您在此同意中中公司和/或运营方布置及应用这些补丁、更新程序及修正程序。</p>
+
+                                </section>
+                                <section>
+                                    <h3>8．平台服务的持续性。</h3>
+                                    <p>
+                                        《中中无车承运人平台》平台是一个在线平台，用户必须在互联网上通过运营方提供的服务在区域内运行该平台。您理解并同意，运营方有权自行决定其提供的服务，并且可以根据《使用条款》部分或者全部终止或中断该服务。您理解并同意，在前述情况下，运营方将根据当时适用法律、法规、规定的要求采取处理措施。您不会以任何理由要求运营方继续提供该服务，也不会因终止或者中断该服务而要求运营方承担法律规定之外的赔偿或者补偿。</p>
+
+                                </section>
+                                <section>
+                                    <h3>9．有限担保。</h3>
+                                    <p>
+                                        《中中无车承运人平台》平台（包括但不限于平台客户端及“用户手册”）将以“现有”的形式提供给您。除非适用法律有明确规定，运营方和中中公司在此不做任何明示或默示的担保（包括但不仅限于任何关于条件、不中断的使用、适销性、特殊适用性或不侵权的担保）。您已知悉前述情况，且您同意自行承担因使用或运行平台（包括但不限于平台客户端及用户手册）所产生的全部风险。
+                                    </p>
+                                </section>
+                                <section>
+                                    <h3>10.责任限制和赔偿限制</h3>
+                                    <p>
+                                        您在此确认和同意，运营方和中中公司及其各自的母公司、子公司和/或关联公司对于运营方和/或中中公司控制之外的原因（比如：地震、火灾、水灾、突发停电、政府命令，ISP中断、软件或硬件故障，等）所造成的损失，包括但不仅限于数据损失、名誉损失、误工损失、电脑故障或其他任何形式的损失、以及任何平台角色、数据或平台内货币、账号、统计、排名或注册信息的损失不承担任何责任；为了本平台网站和服务器的正常运行，运营方保留定期对平台网站和服务器进行停机维护或针对突发事件进行紧急停机维护的权利；因上述情况而造成的正常服务中断、中止，用户应该予以理解，运营方有义务尽力避免服务中断并将中断时间限制在最短时间内。在适用法律许可的最大范围内，运营方和中中公司不会对您因使用平台和/或服务所引起的或者在任何方面与平台或者服务相关的间接的、附带性的、特殊的、惩罚性的或后果性的损失承担任何责任。您在此同意，对于任何由第三方提出的因您使用平台或者服务、违反本协议而引起的任何权利主张、损失、成本、损坏、支出(包括律师费)及其他责任，您同意全力为运营方和中中公司进行辩护，给予赔偿并确保运营方和中中公司的利益免遭伤害。
+                                    </p>
+                                </section>
+                                <section>
+                                    <h3>11．对本协议的变更</h3>
+                                    <p>运营方与中中公司有权在必要的情况之下变更本协议。变更的内容可通过如下任何一种形式发布并生效：（1）《中中无车承运人平台》官方网站公告；（2）电子邮件；（3）纸质邮件；（4）平台内弹出窗口；（5）平台内通知；（6）通过补丁通知。运营方在此提醒您注意留意有关内容。您若不同意变更后的许可协议或无法遵守变更后的许可协议，有权根据本协议第6条立即终止本协议并停止使用平台及相关服务。若您在本协议变更后仍然安装或继续使用平台或相关服务，则意味着您已接受变更后的许可协议的全部内容。运营方可根据实际需要，随时更改、修订、中止或停止平台的任何方面的服务。运营方有权限制平台某些功能或者您进入平台的部分或全部。</p>
+                                </section>
+                                <section>
+                                    <h3>12．争议解决和适用法律。</h3>
+                                    <p>A. 争端对各方而言都是昂贵而耗时的。为缩短解决时间并降低解决成本，对于任何针对本条款的争端、争议或索赔（ 统称“争端”），您和运营方同意尽量通过协商方式解决达成一致。</p>
+                                    <p>B.有约束力的仲裁。 如果各方无法通过协商解决任何争端（但下文明确列出的例外争端除外），您和运营方同意通过仲裁处理。各方同意由中国国际经济贸易仲裁委员会（简称“CIETAC”）根据CIETAC有效的仲裁规则以及适用法律在中国北京进行仲裁。仲裁裁决是终局的，对各方均有约束力。您的仲裁费用及您应分担的仲裁赔偿应由您个人自行承担。
+                                    </p><p>C． 限制。 您和运营方同意任何仲裁仅限应用于运营方同您个人之间的争端。您认可并同意（1）任何仲裁均不牵涉其他人；（2）没有任何权利或授权进行共同仲裁或使用共同仲裁的程序；并且（3）没有任何权利或授权允许代表公众或者其他人的假设的代理人提起争端。
+                                </p><p>D． 协商与仲裁的例外。 您和运营方同意下列争端将不受上述协商及约束仲裁条款约束：（1）任何试图执行或者保护运营方或中中公司知识产权或与知识产权的有效性相关的争端；（2）任何有关偷窃、盗版或未经运营方或中中公司授权使用平台的争端，或由这些情况引起的争端；及（3）要求解除法院禁止令。此类争端应由运营方所在地有管辖权的人民法院处理，您和运营方同意将该类争端提交该法院裁决。
+                                </p><p>E． 适用法律。 除非明确另作说明，本条款应适用中华人民共和国法律，且不适用法律选择原则。《联合国公约国际货物买卖法》被明确排除适用于本条款。
+                                </p>
+                                </section>
+                                <section>
+                                    <h3>13．其他。</h3>
+                                    <p>《中中无车承运人平台》平台与服务进一步受中国出口控制的制约。平台软件不得再出口、下载或以其他方式出口至中国政府采取全面的经济制裁的国家、或中国财政部特定国民和禁止人员的名单或中国商务部禁令表上的任何人或企业。您在此申明并保证：您不处于前述任何国家或任何名单内，不受前述国家控制，不是其国民或居民。
+                                        如本协议任何条款因任何原因被认定为违法、无效或丧失执行力，则该条款将从本许可协议中删除，而其余条款的效力则不受影响。运营方未能执行本许可协议中的任何条款的行为不应被解释为放弃当前或未来对该条款的权利，也不会影响运营方日后要求执行该条款的权利。运营方明确提出放弃本许可协议中的规定、条件或要求不构成放弃追究未来与此规定、条件或要求相一致的责任。
+
+                                    </p>
+                                </section>
+                                <section>
+                                    <h3>如您有任何疑问，请联系运营方客服部门</h3>
+
+                                </section>
+                            </section>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-btn-area close-popup">
+            <a class="weui-btn weui-btn_primary" href="javascript:" >关闭</a>
+        </div>
+    </div>
+	
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js?t=12"></script>
+    <script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=11"></script>
+    <script type="text/javascript" src="../../js/userAuthentic.js?t=111"></script>
+</body>
+</html>

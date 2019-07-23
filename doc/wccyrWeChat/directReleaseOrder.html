@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+        <title>直接发布订单</title>
+        <link rel="stylesheet" href="../../css/weui.min.css">
+        <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+        <link rel="stylesheet" href="../../css/weChat_dqq.css">
+
+        <style>
+            .topFlex{
+                align-items: baseline;
+            }
+            .weui-cell input{
+                text-overflow: ellipsis;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">货物名称：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right" id="fgoodsName" name="fgoodsName" type="text" placeholder="请输入货物名称">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">货物类型：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right"  id="fgoodsTypeCode" name="fgoodsTypeCode" type="text" placeholder="请选择货物类型">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">货物件数：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right"  id="fgoodsNum" name="fgoodsNum" type="text" placeholder="请输入货物数量">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">货物重量：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right"  id="fgoodsWeight" name="fgoodsWeight" type="text" placeholder="请输入货物重量">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">货物体积：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right"  id="fgoodsVolume" name="fgoodsVolume" type="text" placeholder="请输入货物体积">
+                </div>
+            </div>
+            <div class="weui-cell topFlex">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">发货位置：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right"  id="sendCity" notSubmit name="sendCity" type="text" placeholder="请选择发货地">
+                    <input class="weui-input text-right"  id="floadListAdress" name="floadListAdress" type="text" placeholder="请输入发货地址">
+                </div>
+            </div>
+            <div class="weui-cell topFlex">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">收货位置：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right"  id="receiverCity" notSubmit name="receiverCity" type="text" placeholder="请选择收货地">
+                    <input class="weui-input text-right"  id="funloadListAdress" name="funloadListAdress" type="text" placeholder="请输入收货地址">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">发货客户：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="fsenderName" name="fsenderName" type="text" placeholder="请选择发货客户">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">客户电话：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="fsenderMobile" name="fsenderMobile" type="text" placeholder="请选择客户电话">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">合同类型：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="fcontractType" notSubmit name="fcontractType" type="text" placeholder="请选择合同类型">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">收货人：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="freceiverName" name="freceiverName" type="text" placeholder="请收货收货人">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">收货电话：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="freceiverMobile" name="freceiverMobile" type="text" placeholder="请输入收货电话">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">车辆：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="ftruckNo" name="ftruckNo" data-type="1" type="text" placeholder="请选择车辆">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">驾驶员：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="fstaffNo" name="fstaffNo" data-type="2" type="text" placeholder="请选择驾驶员">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">货物价值：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input  text-right" id="fgoodsFee" name="fgoodsFee" type="text" placeholder="请输入货物价值">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">运费：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right" id="fcarriage" name="fcarriage" type="text" placeholder="请输入运费">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label validate-required">实际运费：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input text-right" id="fsjyf" name="fsjyf" type="text" placeholder="请输入实际运费">
+                </div>
+            </div>
+            <div class="btnExit">
+                    <!--<button href="javascript:;" class="weui-btn weui-btn_plain-default d_add">保存</button>-->
+            </div>
+        </div>
+        <div id="popupSearch" class="weui-popup__container">
+            <div class="weui-popup__overlay"></div>
+            <div class="weui-popup__modal">
+                <input type="hidden" id="searchType">
+                <input type="hidden" id="targetId">
+                <div class="weui-search-bar" id="searchBar">
+                    <form class="weui-search-bar__form">
+                        <div class="weui-search-bar__box">
+                            <i class="weui-icon-search"></i>
+                            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入车牌号" required="">
+                            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                        </div>
+                        <label class="weui-search-bar__label" id="searchText">
+                            <i class="weui-icon-search"></i>
+                            <span>请输入车牌号</span>
+                        </label>
+                    </form>
+                    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                </div>
+                <div class="search_body">
+                    <div class="weui-cells"></div>
+                </div>
+            </div>
+        </div>
+		<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="../../js/public/utils.js"></script>
+		<script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=" +Date.parse(new Date())></script>
+		<script type="text/javascript" src="../../js/directReleaseOrder.js"></script>
+        <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/city-picker.min.js"></script>
+     
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+        <title>注册结果页</title>
+		<link rel="stylesheet" href="../../css/weui.min.css">
+		<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+		<link rel="stylesheet" href="../../css/weChat_dqq.css">
+    </head>
+    <body >
+        <!--操作结果返回页面  根据传值不同判断是操作成功还是失败-->
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">操作成功</h2>
+                <p class="weui-msg__desc">注册请求已经提交成功，请耐心等待认证结果。</p>
+            </div>
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                    <a href="javascript:;" class="weui-btn weui-btn_primary userInfo">进入个人中心</a>
+                    <a href="javascript:;" class="weui-btn weui-btn_default">返回</a>
+                </p>
+            </div>
+        </div>
+		<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="../../js/public/utils.js"></script>
+   
+        <script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=" +Date.parse(new Date())></script>
+        <script type="text/javascript" src="../../js/authenticResult.js?t=" +Date.parse(new Date())></script>
+    </body>
+</html>

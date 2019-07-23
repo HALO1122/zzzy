@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+        <title id="title">发布订单</title>
+		<link rel="stylesheet" href="../../css/weui.min.css">
+		<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+        <link rel="stylesheet" href="../../css/example.css">
+        <link rel="stylesheet" href="../../css/index.css">
+		
+        <script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+        <script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+        <script type="text/javascript" src="../../js/public/utils.js"></script>
+		<script type="text/javascript" src="../../js/public/layer.js"></script>
+		<script type="text/javascript" src="../../js/public/jweixin-1.2.0.min.js"></script>
+		<script type="text/javascript" src="../../js/weixinGetLocation.js"></script>
+		
+        <script type="text/javascript" language="javascript" src="http://webapi.amap.com/maps?v=1.3&key=50fa7b3f8e27904ce227a50d6edbcce4&plugin=AMap.Geocoder,AMap.Autocomplete"></script>
+        <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
+        <style type="text/css">
+            #map{
+                height:50%;
+            }
+            .tracksParent{
+                height:50%;
+                overflow-y: scroll;
+                overflow-x: auto;
+            }
+            .btnGroup{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .weui-btn{
+                margin-top: 0!important;
+                width:40% !important;
+            }
+        </style>
+    </head>
+    <body style="line-height:1" ontouchstart>
+        <div class="container" id="container">
+            <div class="page input js_show">
+                <input type="hidden" id="fplateNo">
+                <input type="hidden" id="floadDate">
+                <input type="hidden" id="funloadDate">
+                <div id="map"></div>
+                <div class="tracksParent">
+                    <div class="btnGroup">
+                        <button class="weui-btn weui-btn_mini weui-btn_primary" id="dingwei">车辆定位</button>
+                        <button class="weui-btn weui-btn_mini weui-btn_primary" id="guiji">车辆轨迹</button>
+                    </div>
+                    <table id="tracks" width="100%">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>时间</th>
+                            <th>地点</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="text-align: center">暂无数据</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../../js/goodMap.js"></script>
+        <script type="text/javascript" src="../../js/carLocation.js"></script>
+    </body>
+</html>

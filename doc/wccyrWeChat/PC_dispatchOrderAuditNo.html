@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="renderer" content="webkit">\
+	
+	<link href='../../css/pc/bootstrap.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/bootstrap-responsive.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/jquery-ui-1.10.0.custom.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/select2.min.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+	<link href="../../css/pc/font-awesome.min.css?v=4.3.0" rel="stylesheet">
+	<link href="../../css/pc/zTreeStyle.css" rel="stylesheet">
+	<link href="../../css/pc/dqq.css" rel="stylesheet">
+	<style>
+		#assembleImg li,#unloadImg li{
+			float:left;
+			width:100px;
+			height:100px;
+			position: relative;
+			overflow: hidden;
+			border:1px solid #ddd;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		#assembleImg li:hover .zhezhao,#unloadImg li:hover .zhezhao{
+			top:0;
+		}
+		i.icon-search{
+			position: absolute;
+			bottom:0;
+			right:0;
+		}
+		#assembleImg img,#unloadImg img{
+			width: 100%;
+			height:100%;
+		}
+		.unloadImg{
+			display: inline-block;
+			overflow: hidden;
+			vertical-align: middle;
+		}
+		#modalImg{
+			max-width:800px;
+			min-width: 200px;
+			border: 1px solid #ddd;
+		}
+		.zhezhao{
+			width:100%;
+			height:100%;
+			position:absolute;
+			top:-100%;
+			transition: all .1s linear;
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+			box-shadow: 0 0 200px rgba(0,0,0,.9) inset;
+		}
+		.zhezhao span{
+			color:white;
+		}
+		.modal{
+			max-width: 900px;
+			width:auto;
+			margin-left:0;
+			transform: translate(-50%);
+		}
+		.modal-body{
+			max-height: 500px;
+		}
+	</style>
+	<script>
+		// 订单审核界面
+		var _page="PC_dispatchOrderAuditNo";
+	</script>
+</head>
+<body class="inner_body" id="all_date">
+	<div class="wrapper-content">
+		<section>
+			<div class='container-fluid'>
+				<div class='row-fluid' id='content-wrapper'>
+					<div class='page-header'>
+						<div class="pull-left"><h1><span></span></h1></div>
+						<div class="row-fluid">
+							<div class="span4 offset2">
+								<div class="control-group">
+									<span class="control-label" for="fremark">审核意见：</span>
+									<div class=" controls dis-ib autoWidth">
+										<textarea id="fremark" name="fremark" style="width:100%;height:50px;" placeholder="请输入审核意见"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="span2">
+								<button type='submit' class="submit btn btn-success btn-large pull-left" style="margin-bottom:5px"> 审核通过</button>
+							</div>
+							<div class="span2">
+								<div class="pull-right">
+									<button class="btn d_back">
+										<i class="icon-arrow-left dqq_icon"></i>
+										返回
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form class="form validate-form" onsubmit="return false;">
+						<div class="row-fluid">
+							<div class="span12 box">
+								<div class="box-header blue-background">
+									<div class="title">位置信息</div>
+									<div class="actions">
+										<a href="javascript:void(0);" class="btn box-collapse btn-mini btn-link"><i class="icon iconfont">&#xe9ce;</i></a>
+									</div>
+								</div>
+								<div class='box-content'>
+									<div class="row-fluid">
+										<div class="span7">
+											<div class='control-group'>
+												<span class='control-label  validate-required' >发货地区：</span>
+												<div class=' dis-ib wt85 mb10'>
+													<div class='span4'>
+														<select class='input-block-level select2 startCargo' id='fsenderProvinceCode' name="fsenderProvinceCode" title="请选择省份"  style="width:100%" data-rule-required='true'>
+															<option value="" disabled selected>请选择省份</option>
+														</select>
+													</div>
+													<div class='span4'>
+														<select class='input-block-level select2 startCargo' id='fsenderCityCode' name="fsenderCityCode" title="请选择城市"  style="width:100%">
+														</select>
+													</div>
+													<div class='span4'>
+														<select class='input-block-level select2 startCargo' id='fsenderCountyCode' name="fsenderCountyCode" title="请选择县区"  style="width:100%">
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class='controls span3 dis_no'>
+												<input class='dis span12' id='fsenderAddress' name="fsenderAddress" type='text' placeholder="请选择城市" title="" disabled />
+											</div>
+										</div>
+										<div class='span5'>
+											<div class='control-group'>
+												<span class='control-label' for="floadListAdress">装车地址：</span>
+												<div class=' controls dis-ib wt75'>
+													<input type='text' class="span12" id="floadListAdress" name="floadListAdress" placeholder="请输入装车地址" title="请输入装车地址"/>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row-fluid">
+										<div class="span7">
+											<div class='control-group'>
+												<span class='control-label  validate-required'>到货地区：</span>
+												<div class=' dis-ib wt85 mb10'>
+													<div class='span4'>
+														<select class='input-block-level select2 endCargo' id='freceiverProvinceCode' name="freceiverProvinceCode" title="请选择省份"  style="width:100%" data-rule-required='true'>
+																<option value="" disabled selected>请选择省份</option>
+														</select>
+													</div>
+													<div class='span4'>
+														<select class='input-block-level select2 endCargo' id='freceiverCityCode' name="freceiverCityCode" title="请选择城市"  style="width:100%"></select>
+													</div>
+													<div class='span4'>
+														<select class='input-block-level select2 endCargo' id='freceiverCountyCode' name="freceiverCountyCode" title="请选择县区"  style="width:100%"></select>
+													</div>
+												</div>
+											</div>
+											<div class='controls span3 dis_no'>
+												<input class='span12' id='freceiverAddress' name="freceiverAddress" type='text' placeholder="请选择城市" title="" />
+											</div>
+										</div>
+										<div class='span5'>
+											<div class='control-group'>
+												<span class='control-label' for="funloadListAdress">卸货地址：</span>
+												<div class=' controls dis-ib wt75'>
+													<input type='text' class="span12" id="funloadListAdress" name="funloadListAdress" placeholder="请输入卸货地址" title="请输入卸货地址"/>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class='row-fluid'>
+										<div class="span4">
+											<div class='control-group'>
+												<span class='control-label validate-required' for="fcontractType">合同类型：</span>
+												<div class=' controls dis-ib wt65'>
+													<select class='input-block-level' id="fcontractType" name="fcontractType" data-rule-required='true'>
+														<option value="1">长期合同</option>
+														<option value="2">临时合同</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class='span4'>
+											<div class='control-group'>
+												<span class='control-label validate-required' for="fplanLoadListTime">计划装车时间：</span>
+												<div class=' controls dis-ib wt65'>
+													<input type="text" class="span12" id="fplanLoadListTime" name="fplanLoadListTime" placeholder="请选择计划装车时间" title="请选择计划装车时间" data-rule-required='true' readonly/>
+												</div>
+											</div>
+										</div>
+										<div class="span4">
+											<div class='control-group'>
+												<span class='control-label validate-required' for="ftruckLong">车辆长度/m：</span>
+												<div class='dis-ib wt65'>
+													<select class='select2' id='ftruckLong' name="ftruckLong" title="请选择车长" data-rule-required='true' style="height:32px;width:100%;overflow-y;auto;" multiple="">
+														<option value="零担">零担</option>
+														<option value="4.2">4.2</option>
+														<option value="6.8">6.8</option>
+														<option value="9.6">9.6</option>
+														<option value="13">13</option>
+														<option value="16">16</option>
+														<option value="17.5">17.5</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row-fluid">
+										<div class="span6">
+											<!--回单照片-->
+											<span for="unloadImg">回单照片：</span>
+											<div class="unloadImg autoWidth">
+												<ul id="unloadImg">
+													<li>
+														<img src="/assets/images/NOunloadImg.jpg" alt="">
+														<i class="icon-search"></i>
+														<div class="zhezhao">
+															<span>点击查看原图</span>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="row-fluid">
+										<div class="span12 box">
+											<div class="box-header orange-background ">
+												<div class="title">发货人&收货人</div>
+												<div class="actions">
+													<a href="javascript:void(0);" class="btn box-collapse btn-mini btn-link"><i class="icon iconfont">&#xe9ce;</i></a>
+												</div>
+											</div>
+											<div class='box-content'>
+												<div class='row-fluid'>
+													<div class='span4'>
+														<div class='control-group'>
+															<span class='control-label validate-required' for="fsenderName ">发货人：</span>
+															<div class=' dis-ib wt75 mb10'>
+																<select class='select2 fsenderName' id='fsenderName' name="fsenderName" title="请选择发货人" data-rule-required='true' style="width:100%">
+																	<option value="1" disabled selected>请选择发货人</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class='span4'>
+														<div class='control-group'>
+															<span class='control-label validate-required' for="fsenderTel">发货人电话1：</span>
+															<div class=' controls dis-ib wt65'>
+																<input type='text' class="span12" id="fsenderTel" name="fsenderTel" placeholder="请先选择发货人" title="请选择发货人" data-rule-required='true' readonly/>
+															</div>
+														</div>
+													</div>
+													<div class='span4'>
+														<div class='control-group'>
+															<span class='control-label' for="fsenderMobile">发货人电话2：</span>
+															<div class=' controls dis-ib wt65'>
+																<input type='number' class="span12" id="fsenderMobile" name="fsenderMobile" title="请输入实际联系电话" placeholder="请输入实际联系电话" style=" -webkit-appearance:none!important;"/>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class='row-fluid'>
+													<div class='span4'>
+														<div class='control-group'>
+															<span class='control-label' for="freceiverName">收货人：</span>
+															<div class=' controls dis-ib wt75'>
+																<input type='text' class="span12" id="freceiverName" name="freceiverName" title="请输入收货人" placeholder="请输入收货人"/>
+															</div>
+														</div>
+													</div>
+													<div class='span4'>
+														<div class='control-group'>
+															<span class='control-label' for="freceiverMobile">收货人电话：</span>
+															<div class=' controls dis-ib wt65'>
+																<input type='number' class="span12" id="freceiverMobile" name="freceiverMobile" title="请输入收货人电话" placeholder="请输入收货人电话" />
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row-fluid">
+										<div class="span12 box">
+											<div class="box-header orange-background ">
+												<div class="title">货物信息</div>
+												<div class="actions">
+													<a href="javascript:void(0);" class="btn box-collapse btn-mini btn-link"><i class="icon iconfont">&#xe9ce;</i></a>
+												</div>
+											</div>
+											<div class='box-content'>
+												<div id="body_dist">
+													<input type="hidden" id="dist_num" name="dist_num" value="4" />
+													<div class="row-fluid">
+														<div class="span2">
+															<div class="control-group">
+																<span class="control-label" for="fgoodsMaxLength">最大长度/m：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" id="fgoodsMaxLength" name="fgoodsMaxLength" type="text" placeholder="最大长度" title="请输入最大长度/m" >
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span class="control-label" for="fgoodsMaxWidth">最大宽度/m：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" id="fgoodsMaxWidth" name="fgoodsMaxWidth" type="text" placeholder="最大宽度" title="请输入最大宽度/m" >
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span class="control-label" for="fgoodsMaxHeight">最大高度/m：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" id="fgoodsMaxHeight" name="fgoodsMaxHeight" type="text" placeholder="最大高度" title="请输入最大高度/m" >
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span>&nbsp;&nbsp;</span>
+																<span class="control-label" for="fgoodsMaxWeight">货物总重/t：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" id="fgoodsMaxWeight" name="fgoodsMaxWeight" type="text" placeholder="货物总重" title="请输入货物总重" >
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span class="control-label" for="fgoodsMaxVolume">货物总体积：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" id="fgoodsMaxVolume" name="fgoodsMaxVolume" type="text" placeholder="货物总体积" title="请输入货物总体积" >
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class='row-fluid' style="display:none" id="cargoHide" >
+														<div class="span3">
+															<div class="control-group">
+																<span class="control-label validate-required" for="fgoodsName">货物名称&nbsp;&nbsp;&nbsp;：</span>
+																<div class=" controls dis-ib wt75">
+																	<input class="span12" name="fgoodsName" type="text" placeholder="请输入货物名称" title="货物名称" >
+																	<input type="hidden" name="fid" />
+																	<input type="hidden" name="ftempOrderGoodsNo" />
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span class="control-label validate-required" for="fgoodsWeight">货物重量/t：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" name="fgoodsWeight" type="text" placeholder="重量" title="请输入重量/t" >
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span>&nbsp;</span>
+																<span class="control-label" for="fgoodsNum">货物数量：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" name="fgoodsNum" type="number" placeholder="货物数量" title="请输入货物数量">
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span class="control-label" for="fgoodsVolume">货物体积/m³：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" name="fgoodsVolume" id="fgoodsVolume" type="number" placeholder="体积" title="请输入体积"  data-rule-number="true" >
+																</div>
+															</div>
+														</div>
+														<div class="span3">
+															<div class="control-group">
+																<div class="span9">
+																	<span class='control-label validate-required' for="fgoodsTypeCode ">货物种类：</span>
+																	<div class='dis-ib wt55 mb10'>
+																		<select class='select3' name="fgoodsTypeCode" title="请选择货物种类"  style="width:100%">
+																			<option value="" selected disabled>请选择货物种类</option>
+																		</select>
+																	</div>
+																</div> 
+																<div class='span3'>
+																	<span class="control-label">&nbsp;</span>
+																	<delarea/>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- 单击添加货物 增加的输入框  -->
+													<div class='row-fluid' id="cargo" >
+														<div class="span2">
+															<div class="control-group">
+																<span>&nbsp;</span>
+																<span class="control-label validate-required" for="fgoodsName">货物名称：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" name="fgoodsName" type="text" placeholder="货物名称" title="请输入货物名称" data-rule-required="true">
+																	<input type="hidden" name="fid" />
+																	<input type="hidden" name="ftempOrderGoodsNo" />
+																</div>
+															</div>
+														</div>
+														<div class="span2">
+															<div class="control-group">
+																<span class="control-label validate-required" for="fgoodsWeight">货物重量/t：</span>
+																<div class=" controls dis-ib wt35">
+																	<input class="span12" name="fgoodsWeight" type="text" placeholder="重量" title="请输入重量/t" data-rule-required='true' >
+																</div>
+															</div>
+														</div>
+														<div class="span2 control-group">
+															<span>&nbsp;</span>
+															<span class='control-label validate-required' for="fgoodsTypeCode ">货物种类：</span>
+															<div class='dis-ib wt45 mb10'>
+																<select class='select2' id="fgoodsTypeCode" name="fgoodsTypeCode" title="请选择货物种类" data-rule-required="true" style="width:100%">
+																	<option value="" selected disabled>请选择种类</option>
+																</select>
+															</div>
+														</div>
+
+														<div class="span2">
+															<span class="control-label" for="fgoodsVolume">货物体积/m³：</span>
+															<div class=" controls dis-ib wt35">
+																<input class="span12" name="fgoodsVolume" id="fgoodsVolume" type="number" placeholder="体积" data-rule-number="true" >
+															</div>
+														</div>
+														<div class="span4">
+															<div class="span6">
+																<div class="control-group">
+																	<span>&nbsp;</span>
+																	<span class="control-label" for="fgoodsNum">货物数量：</span>
+																	<div class=" controls dis-ib wt35">
+																		<input class="span12" name="fgoodsNum" type="number" placeholder="货物数量" title="请输入货物数量">
+																	</div>
+																</div>
+															</div>
+															<div class='span3'>
+																<span class="control-label">&nbsp;</span>
+																<delarea/>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--<div class='row-fluid'>-->
+										<!--<div class="form-actions text-center" style="margin-bottom:0">-->
+											<!--<div class="span4"></div>-->
+											<!--<div class="span4">-->
+												<!--<label class="control-label">&nbsp;</label>-->
+												<!--<button type='submit' class="submit btn btn-success btn-large pull-left" style="margin-bottom:5px"> 审核通过</button>-->
+												<!--<button type='button' class="btn btn-danger btn-large d_back pull-right" style="top:0px!important;">审核驳回</button>-->
+											<!--</div>-->
+										<!--</div>-->
+									<!--</div>-->
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">图片详情</h3>
+			</div>
+			<div class="modal-body text-center">
+				<img id="modalImg" src="" alt="">
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+		</div>
+		<div class="dqq_blank"></div>
+	</div>
+	<script src='../../js/public/jquery.min.js' type='text/javascript'></script>
+	<script src='../../js/pc/jquery-ui.min.js' type='text/javascript'></script>
+	<script src='../../js/pc/bootstrap.min.js' type='text/javascript'></script>
+	<script src="../../js/pc/jquery.validate.min.js"></script>
+	<script src='../../js/pc/additional-methods.js' type='text/javascript'></script>
+	<script src="../../js/pc/dqq_include.js" type="text/javascript"></script>
+	<script src="../../js/PC_dispatchOrderAudit.js" type="text/javascript"></script>
+	<script src="../../js/pc/dqq_page_public.js"></script>
+	<script src="../../js/pc/wccyr_dqq.js"></script>
+	<script src="../../js/pc/dqq_function.js"></script>
+</body>
+</html>

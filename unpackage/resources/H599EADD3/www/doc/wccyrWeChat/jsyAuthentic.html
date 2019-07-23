@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>驾驶员认证</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+	<link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <style>
+        ul,li{
+            list-style: none;
+            margin:0;
+            padding: 0;
+        }
+        ul{
+            width:100%;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: .5rem;
+        }
+        li{
+            text-align: center;
+        }
+        li>div{
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">证件照片：</label></div>
+            <div class="weui-cell__bd">
+                <ul>
+                    <li imgNum="fdrivingFile">
+                        <div class="weui-uploader__input-box">
+                            <input class="weui-uploader__input" isRequired="true" placeholder="请上传驾驶证照片" type="file" accept="image/*">
+                        </div>
+                        <div class="add_img weui-uploader__file hide"></div>
+                        <p class="validate-required">驾驶证</p>
+                    </li>
+                    <li imgNum="fcyzgzFile">
+                        <div class="weui-uploader__input-box">
+                            <input class="weui-uploader__input" placeholder="请上传从业资格证" type="file" accept="image/*">
+                        </div>
+                        <div class="add_img weui-uploader__file hide"></div>
+                        <p>从业资格证</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="weui-cells__title">不带星号是非必填项，但是如果上传图片请填写对应编号。</div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="fdrivingCode" class="weui-label">驾驶证号</label></div>
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input" name="fdrivingCode" id="fdrivingCode" placeholder="请输入驾驶证号">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="fdrivingType" class="weui-label">准驾车型</label></div>
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input" name="fdrivingType" id="fdrivingType" placeholder="请准驾车型">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="fcyzgzCode" class="weui-label">从业资格证号</label></div>
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input" name="fcyzgzCode" id="fcyzgzCode" placeholder="请输入从业资格证号">
+            </div>
+        </div>
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary submit" href="javascript:" >注册</a>
+        </div>
+    </div>
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js"></script>
+    <script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=" +Date.parse(new Date())></script>
+    <script type="text/javascript" src="../../js/jsyAuthentic.js?t=" +Date.parse(new Date())></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link href='../../css/pc/bootstrap.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='../../css/pc/bootstrap-responsive.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='../../css/pc/jquery-ui-1.10.0.custom.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='../../css/pc/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/select2.min.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='../../css/pc/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+    <link href="../../css/pc/font-awesome.min.css?v=4.3.0" rel="stylesheet">
+	<link href="../../css/pc/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+	<link href='../../css/pc/mricode.pagination.css' media='all' rel='stylesheet' type='text/css' />
+	<link href="../../css/pc/dqq.css" rel="stylesheet">
+	<script>
+		// 后台页面确认运费
+		var _page="PC_dispatchOrderAffirmFreight";
+	</script>
+</head>
+<body class="inner_body" id="all_date">
+	<div class="wrapper-content">
+		<section>
+			<div class='container-fluid'>
+				<div class='row-fluid' id='content-wrapper'>
+					<div class='span12 box bordered-box dark-orange-border mt20'>
+						<div class='box-header dark-orange-background'>
+							<div class='title'></div>
+							<div class='actions'>
+								<a href="javascript:void(0);" class="btn box-collapse btn-mini btn-link"><i class="icon iconfont">&#xe9ce;</i></a>
+							</div>
+						</div>
+						<form class="form validate-form" onsubmit="return false;">
+							<div class='box-content'>
+								<div class="row-fluid mt10">
+									<div class="span3">
+										<div class='control-group'>
+											<label class='control-label ' for="fdispatchOrderNo">运单号</label>
+											<div class='controls'>
+												<input type="text" class="span12" id="fdispatchOrderNo" name="fdispatchOrderNo" placeholder="请输入运单号" title="运单号长度7-10位">
+											</div>
+										</div>
+									</div>
+									<div class='span3'>
+										<div class='control-group'>
+											<label class='control-label ' for="sstartTime">开始时间</label>
+											<div class='controls'>
+												<input type="text" class="span12 ly_date" id="sstartTime" name="sstartTime" placeholder="请输入开始时间" title="请输入开始时间"  readonly/>
+											</div>
+										</div>
+									</div>
+									<div class='span3'>
+										<div class='control-group'>
+											<label class='control-label ' for="sendTime">结束时间</label>
+											<div class='controls'>
+												<input type="text" class="span12 ly_date" id="sendTime" name="sendTime" placeholder="请输入结束时间" title="请输入结束时间"  readonly/>
+											</div>
+										</div>
+									</div>
+									<div class="6">
+										<label class="control-label">&nbsp;</label>
+										<button class="btn btn-warning d_search pull-right"><i class="icon-white icon-search"></i> 查询</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class='row-fluid mt20 layout_table'>
+						<div class='span12 box bordered-box orange-border'>
+							<div class='box-header orange-background'>
+								<div class='title'></div>
+								<div class='actions'>
+									<a href="javascript:void(0);" class="btn box-collapse2 btn-mini btn-link"><i class="icon iconfont">&#xe9ce;</i></a>
+								</div>
+							</div>
+							<div class='table_list'>
+								<table  class='tableCenter data-table table table-bordered table-striped table-hover' cellspacing="0" width="100%" id="table_01">
+									<thead>
+										<tr class="text-center">
+											<th>序号</th>
+											<th>运单号</th>
+											<th>车牌号</th>
+											<th>驾驶员</th>
+											<th>货物信息</th>
+											<th>起始地</th>
+											<th>卸车时间</th>
+											<th>运费</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							
+								<table align="center">
+									<tr>
+										<td><div id="page_01" class="m-pagination"></div></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="dqq_blank"></div>
+	</div>
+	<script src='../../js/public/jquery.min.js' type='text/javascript'></script>
+	<script src='../../js/pc/bootstrap.min.js' type='text/javascript'></script>
+	<script src="../../js/pc/mricode.pagination.js"></script>
+	<script src="../../js/pc/jquery.validate.min.js"></script>
+	<script src="../../js/pc/jquery.ztree.all.min.js" type="text/javascript"></script>
+	<script src='../../js/pc/additional-methods.js' type='text/javascript'></script>
+	<script src="../../js/pc/dqq_include.js" type="text/javascript"></script>
+	<script src="../../js/PC_dispatchOrderAffirmFreight.js" type="text/javascript"></script>
+	<script src="../../js/pc/dqq_page_public.js"></script>
+	<script src="../../js/pc/wccyr_dqq.js"></script>
+	<script src="../../js/pc/moment.min.js"></script>
+	<script src="../../js/pc/dqq_function.js"></script>
+</body>
+</html>

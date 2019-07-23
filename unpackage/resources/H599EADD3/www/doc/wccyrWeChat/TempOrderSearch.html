@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="../../css/weui.min.css">
+    <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/example.css">
+    <link rel="stylesheet" href="../../css/index.css">
+    <script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/public/jquery.validate.js"></script>
+    <script type="text/javascript" src="../../js/public/utils.js"></script>
+    <script type="text/javascript" src="../../js/public/layer.js"></script>
+    <script type="text/javascript" src="../../js/TempOrderSearch.js?t="+Date.parse(new Date())></script>
+    <script type="text/javascript" src="../../js/telConfig.js?t="+Date.parse(new Date())></script>
+    <style>
+        .weui-tab__panel{
+            height:auto;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+<div class="container" id="container">
+    <input class="weui_input" id="code" name="code" hidden="true"/>
+    <input class="weui_input" id="type" name="type" hidden="true"/>
+    <div class="page navbar js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div class="weui-navbar">
+                    <!--<div class="weui-navbar__item weui-bar__item_on" id="linshi">-->
+                    <!--已发货源-->
+                    <!--</div>-->
+                    <div class="weui-navbar__item" id="dingdan">
+                        我的订单
+                    </div>
+                </div>
+                <div class="weui-tab__panel" style="padding-bottom: 158px; background-color: #EEEEEE" >
+                    <div class="weui-form-preview weui-form-preview-whitebg" id="tempOrder">
+                        <div class="weui-form-preview__bd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">订单号</label>
+                                <span class="weui-form-preview__value" style=" display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;">{0}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">状态</label>
+                                <span class="weui-form-preview__value">{1}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">发货地</label>
+                                <span class="weui-form-preview__value">{2}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">到货地</label>
+                                <span class="weui-form-preview__value">{3}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">装车时间</label>
+                                <span class="weui-form-preview__value">{4}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">货重</label>
+                                <span class="weui-form-preview__value">{5}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">超长超宽</label>
+                                <span class="weui-form-preview__value">{6}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">运费</label>
+                                <span class="weui-form-preview__value">{7}</span>
+                            </div>
+                        </div>
+                        <div class="weui-form-preview__ft" name="quxiao" style="">
+                            <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:" onclick="dianjiquxiao(this)" style="border-bottom: 1px solid  #888;">作废</a>
+                            <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary"  onclick="dianjixiugai(this)"  href="javascript:" style="border-bottom: 1px solid  #888;">修改</button>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="button js_show page__bd_spacing fixed-bottom">
+                    <br>
+                    <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="xinzeng()">新增订单</a>
+                    <a href="javascript:;" id="tel" class="weui-btn weui-btn_default">联系客服</a>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" class="navbar js_show">
+        $(function() {
+            $('.weui-navbar__item').on('click', function() {
+                $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+            });
+        });
+    </script>
+</div>
+
+<script src="../../js/public/jweixin-1.2.0.min.js"></script>
+<!--<script src="/assets/wechat/userAuthen/js/example.js"></script>-->
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>运单审核</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+	<link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <style>
+        ul,li{
+            list-style: none;
+            margin:0;
+            padding: 0;
+        }
+        ul{
+            width:100%;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: .5rem;
+        }
+        li{
+            text-align: center;
+        }
+        li>div{
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!--运单-->
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">审核意见：</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" placeholder="请输入审核意见">
+            </div>
+        </div>
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">运单号</label>
+                    <em class="weui-form-preview__value">12312312</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">车牌号</label>
+                    <span class="weui-form-preview__value">豫K12345</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">驾驶员</label>
+                    <span class="weui-form-preview__value">老王</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">货物</label>
+                    <span class="weui-form-preview__value">大西瓜</span>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">回单照片：</label></div>
+            <div class="weui-cell__bd">
+                <ul>
+                    <li imgNum="1">
+                        <div class="weui-uploader__input-box">
+                            <input class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+                        </div>
+                        <div class="add_img weui-uploader__file hide"></div>
+                        <p>装车照片</p>
+                    </li>
+                    <li imgNum="2">
+                        <div class="weui-uploader__input-box">
+                            <input class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+                        </div>
+                        <div class="add_img weui-uploader__file hide"></div>
+                        <p>卸车照片</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="weui-gallery" id="modal">
+            <!--照片查看-->
+            <span class="weui-gallery__img" ></span>
+            <input type="hidden">
+            <div class="weui-gallery__opr">
+                <a href="javascript:" class="weui-gallery__del">
+                    <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+                </a>
+            </div>
+        </div>
+        <div class="weui-btn-area">
+            <a href="javascript:;" class="weui-btn weui-btn_plain-default">确认提交</a>
+            <a href="tel:0374-7388888" type="tel"  class="weui-btn weui-btn_plain-default">呼叫客服</a>
+        </div>
+    </div>
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js"></script>
+	
+	<script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=" +Date.parse(new Date())></script>
+    <script type="text/javascript" src="../../js/dispatchOrderAudit.js?t=" +Date.parse(new Date())></script>
+</body>
+</html>

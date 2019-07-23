@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title id="title">信息大厅-发布订单</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/example.css">
+    <link rel="stylesheet" href="../../css/index.css">
+	
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js"></script>
+    <script type="text/javascript" src="../../js/public/jquery.validate.js"></script>
+    <script type="text/javascript" src="../../js/public/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="../../js/public/layer.js"></script>
+    <script type="text/javascript" src="../../js/public/city-picker.js"></script>
+    <script type="text/javascript" src="../../js/infoLobbyAddOrder.js"></script>
+    <style type="text/css">
+        .amap-ui-mobi-city-picker .search-box{
+            padding: 0px 0px 0px 0px;
+        }
+        #cancel{
+            background-color: #5DB9A8 ;
+            color:white
+        }
+        #fremark{
+            display:inline-block;
+            height:60px;
+            width:90%;
+            font-size: 1em;
+            font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+        }
+        #loading{
+            text-align: left;
+            margin:0;
+        }
+        .must{
+            color:red;
+        }
+        .search{
+            float: right;
+        }
+        .weui-cells_form{
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body style="line-height:1" ontouchstart>
+<!--信息大厅添加订单-->
+
+<form method="post" id="validation-form" name="from">
+<div class="container" id="container">
+    <input class="weui_input" id="ftempOrderNo" name="fid" hidden="ftempOrderNo"/>
+    <input class="weui_input" id="fid" name="fid" hidden="true"/>
+    <input class="weui_input" id="orderFeeFid" name="orderFeeFid" hidden="true"/>
+    <input class="weui_input" id="forderFeeNo" name="forderFeeNo" hidden="true"/>
+    <input class="weui_input" id="fgoodsFid" name="fgoodsFid" hidden="true"/>
+    <input class="weui_input" id="fsenderCountyCode" name="fsenderCountyCode" hidden="true"/>
+    <input class="weui_input" id="ftempOrderGoodsNo" name="ftempOrderGoodsNo" hidden="true"/>
+    <input class="weui_input" id="freceiverCountyCode" name="freceiverCountyCode" hidden="true"/>
+    <div class="page input js_show">
+        <div class="page__bd">
+            <div class="grey_top">
+                发布订单
+                <!--<div class="search">-->
+                    <!--<a href="javascript:;" class="weui-btn weui-btn_default" id="cancel">查询订单</a>-->
+                <!--</div>-->
+            </div>
+            <div class="weui-cells weui-cells_form" >
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label"><span class="must">*</span><span class="inputName">发货地</span></label></div>
+                    <div class="weui-cell__bd">
+                        <input  id="fsenderSite" maxlength="150" name="fsenderSite"  class="weui-input" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label"><span class="must">*</span><span class="inputName">到货地</span></label></div>
+                    <div class="weui-cell__bd">
+                        <input  id="freceiverSite" maxlength="150" name="freceiverSite"  class="weui-input" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label"><span class="must">*</span><span class="inputName">货物名称</span></label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input"  id="fgoodsName" maxlength="20" name="fgoodsName" placeholder="请输入货物名称" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label"><span class="must">*</span><span class="inputName">货物重量</span>/t</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="fgoodsWeight"  onkeyup="if(isNaN(value))execCommand('undo')" maxlength="20" name="fgoodsWeight"  placeholder="请输入货物重量" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label"><span class="must">*</span><span class="inputName">车辆长度</span>/m</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="ftruckLong" type="text" readonly="" placeholder="点击选择车辆长度">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label"><span class="must">*</span><span class="inputName">发货人电话</span></label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input"  onkeyup="this.value=this.value.replace(/[^\d]/ig,'')" id="fsenderTel" maxlength="11" name="fsenderTel"  placeholder="请输入发货人电话" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label  class="weui-label"><span class="must">*</span><span class="inputName">装车时间</span></label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input"  placeholder="请选择装车时间"  name="fplanLoadListTime" id="fplanLoadListTime" value="">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">发货人姓名</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="ffhrName" maxlength="15" name="ffhrName"  placeholder="请输入发货人姓名" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">运费</label></div>
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input" id="ffee" name="ffee"  placeholder="请输入货物运费" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">备注</label></div>
+                    <div class="weui-cell__bd">
+                        <textarea id="fremark" name="fremark" placeholder="请输入其他信息"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="weui-cells__tips">请填写真实信息，提交信息后，客服人员会尽快对订单进行审核，请保持手机通畅。</div>-->
+        </div>
+        <br>
+        <div class="button js_show page__bd_spacing">
+            <button class="weui-btn weui-btn_primary" type="button" title="认证" data-last="Finish" id="submit-btn" >确定发布</button>
+            <a href="javascript:;" class="weui-btn weui-btn_default" id="cancel">查询订单</a>
+        </div>
+        <br>
+    </div>
+</div>
+</form>
+
+</body>
+</html>

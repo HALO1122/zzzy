@@ -1,0 +1,3 @@
+$(()=>{
+    new getImgData({"imgDelete":false});
+})

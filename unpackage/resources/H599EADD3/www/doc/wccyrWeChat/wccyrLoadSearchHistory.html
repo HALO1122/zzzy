@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>运单任务</title>
+    <link rel="stylesheet" href="../../css/weui.min.css">
+    <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <link rel="stylesheet" href="../../css/example.css">
+    <link rel="stylesheet" href="../../css/index.css">
+	
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/layer.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js?v=12"></script>
+    <script type="text/javascript" src="../../js/wccyrLoadListSearchHistory.js?t="+Date.parse(new Date())></script>
+    <script type="text/javascript" src="../../js/telConfig.js?t="+Date.parse(new Date())></script>
+</head>
+
+<body ontouchstart>
+<div class="container" id="container">
+
+    <div class="page navbar js_show">
+        <div class="page__bd" >
+
+            <div class="weui-tab">
+
+                <div class="weui-navbar">
+                    <div class="weui-navbar__item" onclick="recent()">
+                        当前任务
+                    </div>
+                    <div class="weui-navbar__item weui-bar__item_on" >
+                        历史任务
+                    </div>
+                </div>
+
+                <div class="weui-tab__panel" style="padding-bottom: 158px; background-color: #EEEEEE">
+
+                    <div class="weui-form-preview weui-form-preview-whitebg" id="loadList">
+                        <div class="weui-form-preview__bd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">装车单号</label>
+                                <span class="weui-form-preview__value" style="display: block;
+                                      overflow: hidden;
+                                      text-overflow: ellipsis;
+                                      white-space: nowrap;">{0}</span>
+                            </div>
+
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">发货地</label>
+                                <span class="weui-form-preview__value">{1}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">到货地</label>
+                                <span class="weui-form-preview__value">{2}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">装车时间</label>
+                                <span class="weui-form-preview__value">{3}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">装车地点</label>
+                                <span class="weui-form-preview__value">{4}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">卸车地点</label>
+                                <span class="weui-form-preview__value">{5}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">货重</label>
+                                <span class="weui-form-preview__value">{6}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">最大长宽高</label>
+                                <span class="weui-form-preview__value">{7}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label weui-form-preview__label-dark">任务车辆</label>
+                                <span class="weui-form-preview__value">{8}</span>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="weui-form-preview__ft">
+                            <a name="tel" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" style="border-bottom: 1px solid  #888;">联系客服</a>
+                        </div>
+                    </div>
+                    <div class="weui-form-preview__ft">
+                        <!--<a class="weui-btn weui-btn_primary refresh" href="javascript:">点击刷新历史任务</a>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" class="navbar js_show">
+        $(function() {
+            $('.weui-navbar__item').on('click', function() {
+                $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+            });
+        });
+    </script>
+</div>
+</body>
+
+</html>

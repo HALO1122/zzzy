@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+        <title>信息大厅</title>
+		<link rel="stylesheet" href="../../css/weui.min.css">
+		<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+		<link rel="stylesheet" href="../../css/weChat_dqq.css">
+        <link rel="stylesheet" href="../../css/example.css">
+        <link rel="stylesheet" href="../../css/index.css">
+		
+		<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="../../js/public/utils.js"></script>
+        <script type="text/javascript" src="../../js/public/jweixin-1.2.0.min.js"></script>
+        <script type="text/javascript" src="../../js/public/layer.js"></script>
+        <script type="text/javascript" src="../../js/public/city-picker.js"></script>
+        <script type="text/javascript" src="../../js/infoLobby.js?t=1"></script>
+        <style>
+            .kydd{ width:100%; height:40px;}
+            .kydd ul li{float:left;text-align:center;}
+            .kydd ul li input{text-align: center}
+            .kydd ul li a{ font-size:14px; color:#666;line-height: 40px;padding:0;}
+            .weui-btn{
+                background-color:#0B980A;
+                color:white!important;
+            }
+            .timeLine{
+                display: flex;
+                justify-content: space-between;
+            }
+            .timeLine div{
+                width: 50%;
+            }
+            .timeLine div>p{
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .weui-form-preview__bd,.phone{
+                color:black!important;
+                border-bottom: 1px solid #ddd;
+            }
+            .phone{
+                display: flex;
+                align-items: center;
+            }
+            #shijian{
+                width: 100%;
+                line-height: 40px;
+                border: 0;
+                background-color:transparent;
+            }
+            .dizhi{
+                width: 90%;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                text-align: left;
+            }
+            .searchDizhi{
+                text-overflow: ellipsis;
+                line-height: 40px;
+                border: 0;
+                background-color:transparent;
+                width:40%;
+            }
+            .time{
+                width: 25%;
+            }
+            .site{
+                width:75%;
+            }
+            .rightArrow{
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .hide{
+                display: none;
+            }
+            .noOrder{
+                color:#ddd;
+                text-align: center;
+            }
+            .issue{
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right:0;
+            }
+        </style>
+    </head>
+    <body ontouchstart>
+    <!--信息大厅查询订单-->
+        <div class="container" id="container">
+            <div class="page navbar js_show box">
+                <div class="page__bd">
+                    <!--顶部文字-->
+                    <div class="grey_top">可用订单&nbsp;<span style="font-size:.5rem;color:#a59e9e;">单击订单查看详情</span></div>
+                    <div class="weui-tab">
+                        <!--上边查询条件-->
+                        <div class="kydd">
+                            <ul>
+                                <li class="time">
+                                    <input type="text" id="shijian" value="时间不限">
+                                </li>
+                                <li class="site">
+                                    <input type="text" id="senderSite" class="searchDizhi" value="全部 不限">
+                                    <span class="rightArrow">=></span>
+                                    <input type="text" id="receiverSite" class="searchDizhi" value="全部 不限">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="weui-tab__panel" id="dataParent" style="background-color: #EEEEEE;padding: 0;">
+                            <!--存放订单-->
+                            <div class="weui-form-preview weui-form-preview-whitebg"  id="dispatchorder"></div>
+                            <!--加载状态-->
+                            <div class="weui-loadmore hide" id="loading">
+                              <i class="weui-loading"></i>
+                              <span class="weui-loadmore__tips">正在加载</span>
+                            </div>
+                        </div>
+                        <div class="button js_show page__bd_spacing fixed-bottom issue">
+                            <br>
+                            <a href="javascript:;" class="weui-btn weui-btn_primary" id="issue">去发布</a>
+                            <!--<a href="javascript:;" class="weui-btn weui-btn_primary" id="dingwei">定位</a>-->
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" class="navbar js_show">
+            $(function() {
+                $('.weui-navbar__item').on('click', function() {
+                    $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title id="title">发布订单</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+	<link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <link rel="stylesheet" href="../../css/example.css">
+    <link rel="stylesheet" href="../../css/index.css">
+	
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js"></script>	
+    <script type="text/javascript" language="javascript" src="http://webapi.amap.com/maps?v=1.3&key=50fa7b3f8e27904ce227a50d6edbcce4&plugin=AMap.Geocoder,AMap.Autocomplete"></script>
+    <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
+    <script type="text/javascript" src="../../js/public/jquery.validate.js"></script>
+    <script type="text/javascript" src="../../js/public/jweixin-1.2.0.min.js"></script>
+    <script type="text/javascript" src="../../js/public/layer.js"></script>
+    <script type="text/javascript" src="../../js/public/zepto.min.js?t=" +Date.parse(new Date())></script>
+    <style type="text/css">
+        .amap-ui-mobi-city-picker .search-box{
+            padding: 0px 0px 0px 0px;
+        }
+        #cancel{
+            background-color: #5DB9A8 ;
+            color:white
+        }
+        #fremark{
+            display:inline-block;
+            height:60px;
+            width:90%;
+            font-size: 1em;
+            font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+        }
+        #loading{
+            text-align: left;
+            margin:0;
+        }
+    </style>
+</head>
+<body style="line-height:1" ontouchstart>
+<form method="post" id="validation-form" name="from">
+<div class="container" id="container">
+    <input class="weui_input" id="ftempOrderNo" name="fid" hidden="ftempOrderNo"/>
+    <input class="weui_input" id="fid" name="fid" hidden="true"/>
+    <input class="weui_input" id="orderFeeFid" name="orderFeeFid" hidden="true"/>
+    <input class="weui_input" id="forderFeeNo" name="forderFeeNo" hidden="true"/>
+    <input class="weui_input" id="fgoodsFid" name="fgoodsFid" hidden="true"/>
+    <input class="weui_input" id="fsenderCountyCode" name="fsenderCountyCode" hidden="true"/>
+    <input class="weui_input" id="ftempOrderGoodsNo" name="ftempOrderGoodsNo" hidden="true"/>
+    <input class="weui_input" id="freceiverCountyCode" name="freceiverCountyCode" hidden="true"/>
+    <div class="page input js_show">
+        <div class="page__bd">
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">发货地</label></div>
+                    <div class="weui-cell__bd">
+						<input  id="fsenderAddress" type="hidden" maxlength="150" name="fsenderAddress"  class="weui-input" placeholder="请选择">
+                        <div class="weui-loadmore" id="loading">
+                            <i class="weui-loading"></i>
+                            <span class="weui-loadmore__tips">正在定位</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-cell" style="display: none">
+                    <div class="weui-cell__hd"><label class="weui-label">装车地址</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="floadListAdress" readonly="true" name="floadListAdress">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">到货地</label></div>
+                    <div class="weui-cell__bd">
+                        <input  id="freceiverAddress" maxlength="150" name="freceiverAddress"  class="weui-input" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="weui-cell" style="display: none">
+                    <div class="weui-cell__hd"><label class="weui-label">卸货地址</label></div>
+                    <div class="weui-cell__bd">
+                        <input id="funloadListAdress"  name="funloadListAdress" readonly="true" class="weui-input"  >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">货物名称</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input"  id="fgoodsName" maxlength="20" name="fgoodsName" placeholder="请输入货物名称" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">货物重量/t</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="fgoodsWeight"  onkeyup="if(isNaN(value))execCommand('undo')" maxlength="20" name="fgoodsWeight"  placeholder="请输入货物重量" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">车辆长度/m</label></div>
+                    <div class="weui-cell__bd">
+                        <!--<input class="weui-input" id="ftruckLong"  onkeyup="if(isNaN(value))execCommand('undo')" maxlength="20" name="ftruckLong"  placeholder="请输入车辆长度" >-->
+                        <!--<select class="weui-select" id="ftruckLong">-->
+                            <!--<option value="">请选择</option>-->
+                            <!--<option value="0.0">零担</option>-->
+                            <!--<option value="4.2">4.2</option>-->
+                            <!--<option value="6.8">6.8</option>-->
+                            <!--<option value="9.6">9.6</option>-->
+                            <!--<option value="13">13</option>-->
+                            <!--<option value="16">16</option>-->
+                            <!--<option value="17.5">17.5</option>-->
+                        <!--</select>-->
+                        <input class="weui-input" id="ftruckLong" type="text" readonly="">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label  class="weui-label">装车时间</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input"  placeholder="请选择装车时间"  name="fplanLoadListTime" id="fplanLoadListTime" value="">
+                    </div>
+                </div>
+                <div class="weui-cell" style="display: none">
+                    <div class="weui-cell__hd"><label class="weui-label">发货人电话</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input"  onkeyup="this.value=this.value.replace(/[^\d]/ig,'')" id="fsenderMobile" maxlength="15" name="fsenderMobile"  placeholder="请输入发货人电话" >
+                    </div>
+                </div>
+                <div class="weui-cell"  style="display: none">
+                    <div class="weui-cell__hd"><label class="weui-label">收货人</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="freceiverName" maxlength="15" name="freceiverName" placeholder="请输入收货人" >
+                    </div>
+                </div>
+                <div class="weui-cell"  style="display: none">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">手机号</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')" id="freceiverMobile" maxlength="11" name="freceiverMobile" type="tel" placeholder="请输入手机号" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">货值</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input"  onkeyup="if(isNaN(value))execCommand('undo')" id="fgoodsFee" maxlength="20" name="fgoodsFee"  placeholder="请输入货值" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">运费</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input"  onkeyup="if(isNaN(value))execCommand('undo')" id="fcarriage" maxlength="20" name="fcarriage"  placeholder="请输入运费" >
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">备注</label></div>
+                    <div class="weui-cell__bd">
+                        <!--<input class="weui-input"  onkeyup="if(isNaN(value))execCommand('undo')" id="fremark" maxlength="20" name="fremark"  placeholder="请输入备注" >-->
+                        <textarea id="fremark" placeholder="请输入备注信息"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__tips">请填写真实信息，提交信息后，客服人员会尽快对订单进行审核，请保持手机通畅。</div>
+        </div>
+        <br>
+        <div class="button js_show page__bd_spacing">
+            <!--<button class="weui-btn weui-btn_primary"  title="认证" data-last="Finish"   id="submit-btn" >确定发布</button>-->
+            <!--<a href="javascript:;" class="weui-btn weui-btn_default" id="cancel">查询订单</a>-->
+        </div>
+        <br>
+    </div>
+    <div id="choseCity" style="display: none;height: 100%;background-color:white;line-height: 2">
+        <div class="bd">
+            <div class="weui_cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">搜索地址</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="inputElem" placeholder="搜索地址" name="inputElem"  >
+                    </div>
+                    <a id="cancelChoose" href="javascript:void(0);"  style="color:black">取消</a>
+                </div>
+            </div>
+            <div class="weui_panel_bd">
+                <div class="weui_panel weui_panel_access">
+                    <ul id="endAddrSelectUl" class="am-list" style="text-align:left;display: none">
+                        <li  class="selectLocationOpt"  >
+                            <input type="hidden" value="{0}"  tipName ="{1}" district="{2}" address ="{3}"  >
+                            <a href="#" style="color: black;">
+                                <div class="weui_media_box weui_media_text">
+                                <h4 class="weui_media_title"> {1}</h4>
+                                <p class='weui_media_desc'>{2} - {3}</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+	
+</div>
+
+
+</form>
+<script type="text/javascript" src="../../js/goodMap.js"></script>
+<script type="text/javascript" src="../../js/tempOrderAddOrUpdate.js?v=12"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e320b3d73414524513c701e67c49e92b"></script>
+<script type="text/javascript">
+	var map = new AMap.Map('mapContainer', {
+	   resizeEnable: true
+	})
+	
+	map.plugin('AMap.Geolocation', function() {
+		var geolocation = new AMap.Geolocation({
+			// 是否使用高精度定位，默认：true
+			enableHighAccuracy: true,
+			// 设置定位超时时间，默认：无穷大
+			timeout: 10000,
+			// 定位按钮的停靠位置的偏移量，默认：Pixel(10, 20)
+			buttonOffset: new AMap.Pixel(10, 20),
+			//  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+			zoomToAccuracy: true,     
+			//  定位按钮的排放位置,  RB表示右下
+			buttonPosition: 'RB'
+		 })
+		// 获取当前位置信息
+		geolocation.getCurrentPosition();
+		// 监听获取位置信息成功的回调函数
+		AMap.event.addListener(geolocation, 'complete', onComplete);
+		// 监听获取位置信息错误的回调函数
+		AMap.event.addListener(geolocation, 'error', onError);
+	
+		function onComplete (data) {
+			// data是具体的定位信息
+			addComp = data.addressComponent;
+			// 获取信息中的省市区并放入到输入框中
+			$("#fsenderAddress").val(addComp.province+"-"+addComp.city+"-"+addComp.district).trigger("change");
+			$("#fsenderCountyCode").val(addComp.adcode);
+			let fsenderMsg = {
+				'fsenderAddress':$("#fsenderAddress").val(),
+				'fsenderCountyCode':$("#fsenderCountyCode").val()
+			}
+			window.sessionStorage.setItem('fsendMsg', JSON.stringify(fsenderMsg));
+		}
+		
+		function onError (error) {
+			// 定位出错
+			console.log(error)
+		}
+	})
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+  <title>订单作废</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+	<link rel="stylesheet" href="../../css/weChat_dqq.css">
+	<link rel="stylesheet" href="../../css/example.css">
+	<link rel="stylesheet" href="../../css/index.css">
+
+  <script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+  <script type="text/javascript" src="../../js/public/jquery.validate.js"></script>
+  <script type="text/javascript" src="../../js/public/layer.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js"></script>
+  <script type="text/javascript" src="../../js/TempOrderCancel.js"></script>
+  <script type="text/javascript" src="../../js/telConfig.js"></script>
+</head>
+
+<body ontouchstart>
+<div class="container" id="container">
+  <input class="weui_input" id="code" name="code" hidden="true"/>
+  <input class="weui_input" id="type" name="type" hidden="true"/>
+  <div class="page js_show">
+    <div class="page__bd">
+      <div style="padding-bottom: 158px; background-color: #EEEEEE;">
+      <div class="weui-form-preview weui-form-preview-whitebg">
+        <div class="weui-form-preview__bd" id="chaxunbyNo" style="display: none">
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">订单号</label>
+            <span class="weui-form-preview__value" style=" display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;">{0}</span>
+          </div>
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">状态</label>
+            <span class="weui-form-preview__value">{1}</span>
+          </div>
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">发货地</label>
+            <span class="weui-form-preview__value">{2}</span>
+          </div>
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">到货地</label>
+            <span class="weui-form-preview__value">{3}</span>
+          </div>
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">装车时间</label>
+            <span class="weui-form-preview__value">{4}</span>
+          </div>
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">货重</label>
+            <span class="weui-form-preview__value">{5}</span>
+          </div>
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">超长超宽</label>
+            <span class="weui-form-preview__value">{6}</span>
+          </div>
+          <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label weui-form-preview__label-dark">运费</label>
+            <span class="weui-form-preview__value">{7}</span>
+          </div>
+        </div>
+        <div class="input js_show">
+            <!--<div class="weui-cell">-->
+              <!--<div class="weui-cell__hd"><label class="weui-label">作废原因</label></div>-->
+                <!--<div class="weui-cell__bd">-->
+                  <!--<input class="weui-input" id="yuanyin" maxlength="15" name="freceiverName" placeholder="请输入作废原因" >-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="weui-cell">
+              <div class="weui-cell__hd"><label class="weui-label">备注</label></div>
+              <div class="weui-cell__bd">
+                <input class="weui-input text-right" id="beizhu" maxlength="15" name="freceiverName" placeholder="请输入备注" >
+              </div>
+            </div>
+        </div>
+
+        <div class="weui-form-preview__ft">
+          <!--<a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">作废订单</a>-->
+          <a class="weui-form-preview__btn quxiao" href="javascript:">取消</a>
+        </div>
+      </div>
+
+    </div>
+
+      <!--<div class="button js_show page__bd_spacing fixed-bottom">-->
+        <!--<br>-->
+        <!--<a href="javascript:;" class="weui-btn weui-btn_primary" onclick="xinzeng()">新增订单</a>-->
+        <!--<a href="javascript:;" class="weui-btn weui-btn_default" id="tel">联系客服</a>-->
+        <!--<br>-->
+      <!--</div>-->
+      </div>
+  </div>
+</div>
+
+
+</body>
+</html>

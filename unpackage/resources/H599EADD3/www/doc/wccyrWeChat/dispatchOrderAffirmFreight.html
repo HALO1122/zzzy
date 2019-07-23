@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>确认运费</title>
+	<link rel="stylesheet" href="../../css/weui.min.css">
+	<link rel="stylesheet" href="../../css/jquery-weui.min.css">
+	<link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <link rel="stylesheet" href="../../css/topSearchModule.css">
+    <style>
+        .queren{
+            display: flex;
+        }
+        .queren button{
+            flex-grow : 1;
+        }
+        .orderList{
+            margin-bottom: 1rem;
+            border-top:1px solid #ddd;
+            border-bottom:1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!--运单列表-->
+    <div id="searchBar">
+        <div class="weui-search-bar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入运单号或者扫一扫" required="">
+                    <a href="javascript:;" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <div id="userName" class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input class="weui-input" id="orderStatus" type="text" value="待提款" readonly="" data-values="1">
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>请输入运单号</span>
+                </label>
+            </form>
+
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <button class="weui-btn weui-btn_primary " id="searchBtn">搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-cells weui-cells_checkbox">
+        <div class="weui-flex orderList">
+            <div class="w80">
+                <label class="weui-cell weui-check__label" for="s11">
+                    <div class="weui-cell__hd">
+                        <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
+                        <i class="weui-icon-checked"></i>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>运单号：12312312</p>
+                        <p>车牌号：豫K12345</p>
+                    </div>
+                </label>
+            </div>
+            <div class="w20 queren" >
+                <button>运费确认</button>
+            </div>
+        </div>
+    </div>
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/utils.js"></script>
+	<script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=" +Date.parse(new Date())></script>
+    <script type="text/javascript" src="../../js/dispatchOrderAffirmFreight.js?t=" +Date.parse(new Date())></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <title>用户绑定</title>
+        <link rel="stylesheet" href="../../css/weui.min.css">
+        <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+        <link rel="stylesheet" href="../../css/weChat_dqq.css">
+        <style>
+            .weui-cells_form{
+                margin: 0;
+            }
+            .weuiAgree a{
+                pointer-events: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label for="ftype" class="weui-label">绑定角色</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="ftype" name="ftype" value="车主" type="text" readonly="" data-values="2">
+                </div>
+            </div>
+            <div class="weui-cells__tips">绑定角色必须是后台拥有的对应角色，否则可能会绑定失败！</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">账号</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="fusername" name="fusername" type="text" placeholder="请输入账号">
+                </div>
+            </div>
+			
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="fpassword" name="fpassword" type="password" placeholder="请输入密码">
+                </div>
+            </div>
+			<div class="weui-cell">
+			    <div class="weui-cell__hd"><label class="weui-label validate-required">手机号</label></div>
+			    <div class="weui-cell__bd">
+			        <input class="weui-input" id="ftelAsImei" name="ftelAsImei" type="tel" placeholder="请输入手机号">
+			    </div>
+			</div>
+            <label for="weuiAgree" class="weui-agree">
+                <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+                <span class="weui-agree__text">
+                阅读并同意<a href="javascript:void(0);">《相关条款》</a>
+              </span>
+            </label>
+            <div class="weui-btn-area">
+                <!--<a class="weui-btn weui-btn_primary submit" href="javascript:" id="showTooltips">绑定</a>-->
+            </div>
+        </div>
+        
+		<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="../../js/public/utils.js"></script>
+        <script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js"></script>
+        <script type="text/javascript" src="../../js/public/jweixin-1.2.0.min.js"></script>
+        <script type="text/javascript" src="../../js/wccyrUserBind.js"></script>
+    </body>
+</html>

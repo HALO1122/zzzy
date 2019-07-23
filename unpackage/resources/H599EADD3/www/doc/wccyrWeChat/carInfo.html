@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+        <title>车辆添加</title>
+       <link rel="stylesheet" href="../../css/weui.min.css">
+       <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+       <link rel="stylesheet" href="../../css/weChat_dqq.css">
+        <style>
+            ul,li{
+                list-style: none;
+                margin:0;
+                padding: 0;
+            }
+            ul{
+                width:100%;
+                display: flex;
+                justify-content: space-evenly;
+                font-size: .5rem;
+            }
+            li{
+                text-align: center;
+            }
+            li>div{
+                display: inline-block;
+                position: relative;
+            }
+            .weui-btn{
+                margin-top: 15px;
+            }
+            #discern{
+                width: 40%;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">证件照片：</label></div>
+            <div class="weui-cell__bd">
+                <ul>
+                    <li imgNum="fclxczzpUrl">
+                        <div class="weui-uploader__input-box">
+                            <input class="weui-uploader__input"  type="file" accept="image/*" multiple="">
+                        </div>
+                        <div class="add_img weui-uploader__file hide"></div>
+                        <p class="validate-required">行车证照片</p>
+                    </li>
+                    <li imgNum="fclyyzzpUrl">
+                        <div class="weui-uploader__input-box">
+                            <input class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                        </div>
+                        <div class="add_img weui-uploader__file hide"></div>
+                        <p class="validate-required">营运证照片</p>
+                    </li>
+                </ul>
+                <div class="text-center">
+                    <button class="weui-btn weui-btn_mini weui-btn_default" id="discern">识别</button>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells__title">目前暂只支持识别身份证，驾驶证，行车证</div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label validate-required" for="fplateNo">车牌号：</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="fplateNo" name="fplateNo" type="text" placeholder="请输入车牌号">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label validate-required">车架号：</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="fframeNo" name="fframeNo" type="text" placeholder="请输入车架号">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label validate-required">核载吨位：</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="floadWeight" name="floadWeight" type="text" placeholder="请输核载吨位">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label validate-required">车长：</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input weuiSelect"  data-key="ftruckLong" id="ftruckLong" name="ftruckLong" type="number" placeholder="请输入车长">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label validate-required">车辆类型：</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input weuiSelect" data-key="ftruckTypeName" id="ftruckTypeNo" name="ftruckTypeNo" type="text" placeholder="请输入车辆类型">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label validate-required">营运证号：</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input " id="fvepermitNumber" name="fvepermitNumber" type="number" placeholder="请输入营运证号">
+            </div>
+        </div>
+        <div class="weui-cell isUse hide">
+            <div class="weui-cell__hd">
+                <label for="fisAbled" class="weui-label">是否可用</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input weuiSelect" data-key="isAbledName" name="fisAbled" id="fisAbled" type="text" value="可用" data-values="1">
+            </div>
+        </div>
+        <div class="weui-gallery" id="modal">
+            <!--照片查看-->
+            <span class="weui-gallery__img" ></span>
+            <input type="hidden">
+            <div class="weui-gallery__opr">
+                <a href="javascript:" class="weui-gallery__del">
+                    <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+                </a>
+            </div>
+        </div>
+        <div class="btnAdd">
+            <!--<button href="javascript:;" class="weui-btn weui-btn_plain-default d_add">保存</button>-->
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/public/utils.js"></script>
+    <script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=" +Date.parse(new Date())></script>
+    <script type="text/javascript" src="../../js/carInfo.js?t=" +Date.parse(new Date())></script>
+    </body>
+</html>

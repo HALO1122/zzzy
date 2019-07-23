@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+	
+	<link href='../../css/pc/bootstrap.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/bootstrap-responsive.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/jquery-ui-1.10.0.custom.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/select2.min.css' media='all' rel='stylesheet' type='text/css' />
+	<link href='../../css/pc/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+	<link href="../../css/pc/dqq.css" rel="stylesheet">	
+	<link href="../../css/pc/layui.css" rel="stylesheet">
+	<script>
+		// 确认运单费用
+		var _page="PC_dispatchOrderAffirmFreightNo";
+	</script>
+</head>
+<body class="inner_body" id="all_date">
+	<div class="wrapper-content">
+		<section>
+			<div class='container-fluid'>
+				<div class='row-fluid' id='content-wrapper'>
+					<div class='page-header'>
+						<div class="pull-left"><h1><span></span></h1></div>
+						<div class="pull-right">
+						<button class="btn d_back">
+							<i class="icon-arrow-left dqq_icon"></i>
+							返回
+						</button>
+						</div>
+					</div>
+					<form class="form validate-form" onsubmit="return false;">
+						<div class="row-fluid">
+							<div class="span12 box">
+								<div class="box-header blue-background">
+									<div class="title">详细信息</div>
+									<div class="actions">
+										<a href="javascript:void(0);" class="btn box-collapse btn-mini btn-link"><i class="icon iconfont">&#xe9ce;</i></a>
+									</div>
+								</div>
+								<div class='box-content'>
+									<div class="row-fluid">
+										<div class='span3'>
+											<div class='control-group'>
+												<label class='control-label' for="ffeeNo">原运价</label>
+												<div class='controls'>
+													<input class='span12' id='ffeeNo' name="ffeeNo" type='text' title="请填写原运价" readonly value="8000" style="background: #ddd"/>
+												</div>
+											</div>
+										</div>
+										<div class='span3'>
+											<div class='control-group'>
+												<label class='control-label' for="ffeeNo">变更运价</label>
+												<div class='controls'>
+													<input class='span12' id='ffeeNo' name="ffeeNo" type='text' placeholder="请输入变更运价" title="请填变更运价" value="8000"/>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="fremark">备注</label>
+										<div class="controls">
+											<textarea id="fremark" name="fremark" class="char-counter input-block-level" placeholder="" rows="2"></textarea>
+										</div>
+									</div>
+									<div class="row-fluid">
+										<div class="span12">
+											<div class=" mb10 well">
+												<div id="trace" style="width:50%!important;margin:0 auto;">
+													<ul class="layui-timeline">
+														<li class="layui-timeline-item">
+															<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+															<div class="layui-timeline-content layui-text">
+																<h3 class="layui-timeline-title" style="line-height:0;">2018-05-11 09:27:40.0</h3>
+																<p>
+																	由
+																	<span class="tarce_name">老司机</span>执行
+																	<span class="tarce_caozuo">变更票价</span>操作<br/>
+																	生成订单：<span class="tarce_number">123123123</span>
+																</p>
+															</div>
+														</li><li class="layui-timeline-item">
+														<i class="layui-icon layui-timeline-axis">&#xe643;</i>
+														<div class="layui-timeline-content layui-text">
+															<h3 class="layui-timeline-title" style="line-height:0;">2018-05-11 11:27:40.0</h3>
+															<p>
+																由
+																<span class="tarce_name">老司机</span>执行
+																<span class="tarce_caozuo">变更票价</span>操作<br/>
+																生成订单：<span class="tarce_number">123123123</span>
+															</p>
+														</div>
+													</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='row-fluid'>
+							<div class="form-actions text-center" style="margin-bottom:0">
+								<button type='submit' class="submit btn btn-success btn-large" style="margin-bottom:5px"><i class="icon iconfont">&#xe646;</i> 保存</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		<div class="dqq_blank"></div>
+	</div>
+	<script src='../../js/public/jquery.min.js' type='text/javascript'></script>
+	<script src='../../js/pc/bootstrap.min.js' type='text/javascript'></script>
+	<script src="../../js/pc/jquery.validate.min.js"></script>
+	<script src='../../js/pc/additional-methods.js' type='text/javascript'></script>
+	<script src="../../js/pc/dqq_include.js" type="text/javascript"></script>
+	<script src="../../js/PC_dispatchOrderAffirmFreight.js" type="text/javascript"></script>
+	<script src="../../js/pc/dqq_page_public.js"></script>
+	<script src="../../js/pc/wccyr_dqq.js"></script>
+	<script src="../../js/pc/dqq_function.js"></script>
+	<script src="../../js/pc/layui.all.js" type="text/javascript"></script>
+</body>
+</html>

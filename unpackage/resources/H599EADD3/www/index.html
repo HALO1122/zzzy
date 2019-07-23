@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>平台注册</title>
+    <link rel="stylesheet" href="./css/weui.min.css">
+    <link rel="stylesheet" href="./css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./css/weChat_dqq.css">
+    <style>
+	   #content_logo{
+		   text-align: center;
+		   margin:100px 0px 38px 0px;
+	   }
+	   #content_logo img{
+		   border-radius: 50%;
+	   }
+	   .weui-cell__hd{
+		   width: 60px;
+		   margin-left: 72px;
+	   }
+	   .foot_btn{
+		   margin-top: 60px;
+	   }
+	   .user_login{
+		   width: 80%;
+	   }
+	   .flatform_reg{
+		   color: #436895;
+		   margin-top: 18px;
+		   margin-left: 10%;
+	   }
+	   .flatform_msg{
+		   color: #436895;
+		   margin-top: 18px;
+		   margin-left: 42%;
+		}
+		.tip_btn {	
+			display: flex;
+			width: 100%;
+		}
+    </style>
+</head>
+<body >
+	
+	<div id="content_logo">
+		<img src="./img/logo.png" >
+	</div>
+	<div class="weui-cells weui-cells_form">
+		<div class="weui-cell">
+			<div class="weui-cell__hd"><label class="weui-label">账号：</label></div>
+			<div class="weui-cell__bd">
+				<input class="weui-input" type="text" id="fusername" name="fusername" placeholder="请输入用户账号">
+			</div>
+		</div>
+		<div class="weui-cell">
+			<div class="weui-cell__hd"><label class="weui-label">密码：</label></div>
+			<div class="weui-cell__bd">
+				<input class="weui-input" type="password" id="fpassword" name="fpassword" placeholder="请输入登录密码">
+			</div>
+		</div>
+	</div>
+	<div class="foot_btn">
+		<a href="javascript:;" id="login_btn" class="weui-btn weui-btn_primary user_login" onclick="login()">用户登录</a>
+	</div>
+	<div class="tip_btn">
+		<a href="javascript:;" id="reg_btn" class="flatform_reg" onclick="flatReg()">平台注册</a>
+		<a href="javascript:;" id="forget_btn" class="flatform_msg" onclick="flatMsg()">忘记信息？</a>
+	</div>
+	<!-- <button type="button" class="weui-btn" style="margin-top: 20px;" onclick="getDeviceInfo()">获取信息</button> -->
+	
+
+    <script type="text/javascript" src="./js/public/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="./js/public/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="./js/public/utils.js"></script>
+    <script type="text/javascript" src="./js/public/wccyrWeChat_dqq.js?t=11"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

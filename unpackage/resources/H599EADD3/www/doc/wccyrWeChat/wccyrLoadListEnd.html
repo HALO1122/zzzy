@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" charset="utf-8">
+    <title>装车完成</title>
+    <link rel="stylesheet" href="../../css/weui.min.css">
+    <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/weChat_dqq.css">
+    <link rel="stylesheet" href="../../css/example.css">
+    <link rel="stylesheet" href="../../css/index.css">
+	
+	<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/public/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/public/layer.js"></script>
+    <script type="text/javascript" src="../../js/public/jweixin-1.2.0.min.js"></script>
+    <script type="text/javascript" src="../../js/public/utils.js"></script>
+    <script type="text/javascript" src="../../js/public/wccyrWeChat_dqq.js?t=11"></script>
+    <script type="text/javascript" src="../../js/wccyrLoadListEnd.js"></script>
+    <script type="text/javascript" src="../../js/telConfig.js"></script>
+	<script type="text/javascript" src="../../js/weixinUpload.js?t=" +Date.parse(new Date())></script>
+
+    <style>
+        ul,li{
+            list-style: none;
+            margin:0;
+            padding: 0;
+        }
+        ul{
+            width:100%;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: .5rem;
+        }
+        li{
+            text-align: center;
+        }
+        li>div{
+            display: inline-block;
+            position: relative;
+        }
+        body,html{
+            height:100%;
+        }
+        label > *{
+            pointer-events : auto;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+<div class="container" id="container">
+
+    <div class="page js_show">
+        <div class="page__bd">
+
+            <div class="weui_media_box weui_media_text"  style="height:40px; line-height:40px; padding-left:10px">
+                <p id="orderNo" class="weui_media_desc" style=" display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;"></p>
+            </div>
+            <div style="padding-bottom: 10px; background-color: #EEEEEE;">
+                <div class="weui-form-preview weui-form-preview-whitebg" id="loadList">
+
+                    <div class="weui-form-preview__bd">
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">发货地</label>
+                            <span class="weui-form-preview__value">{0}</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">到货地</label>
+                            <span class="weui-form-preview__value">{1}</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">装车时间</label>
+                            <span class="weui-form-preview__value">{2}</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">装车地点</label>
+                            <span class="weui-form-preview__value">{3}</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">卸车地点</label>
+                            <span class="weui-form-preview__value">{4}</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">货重</label>
+                            <span class="weui-form-preview__value">{5}</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">最大长宽高</label>
+                            <span class="weui-form-preview__value">{6}</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label weui-form-preview__label-dark">任务车辆</label>
+                            <span class="weui-form-preview__value">{7}</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">装车照片：</label></div>
+                <div class="weui-cell__bd">
+                    <ul>
+                        <li imgNum="fzcctzpUrl">
+                            <div class="weui-uploader__input-box">
+                                <input class="weui-uploader__input" placeholder="请上传装车车头照片" type="file" accept="image/*">
+                            </div>
+                            <div class="add_img weui-uploader__file hide"></div>
+                            <p class="">车头照片</p>
+                        </li>
+                        <li imgNum="fzccszpUrl">
+                            <div class="weui-uploader__input-box">
+                                <input class="weui-uploader__input" placeholder="请上传装车车身照片" type="file" accept="image/*">
+                            </div>
+                            <div class="add_img weui-uploader__file hide"></div>
+                            <p class="">车身照片</p>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li imgNum="fzccwzpUrl">
+                            <div class="weui-uploader__input-box">
+                                <input class="weui-uploader__input" placeholder="请上传装车车尾照片" type="file" accept="image/*">
+                            </div>
+                            <div class="add_img weui-uploader__file hide"></div>
+                            <p class="">车尾照片</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="js_dialog" id="Dialog" style="opacity: 0;display:none;">
+                <div class="weui-mask"></div>
+                <div class="weui-dialog">
+                    <div class="weui-dialog__bd">
+                        请选择三张图片
+                    </div>
+                    <div class="weui-dialog__ft">
+                        <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary" id="dis">确认</a>
+                    </div>
+                </div>
+            </div>
+            <div class="button js_show page__bd_spacing fixed-bottom">
+                <br>
+                <a href="javascript:;" class="weui-btn weui-btn_primary" id="end">装车完成</a>
+                <a href="javascript:;" class="weui-btn weui-btn_default" id="tel"  >联系客服</a>
+                <br>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--<script src="zepto.min.js"></script>-->
+<!--<script src="jweixin-1.0.0.js"></script>-->
+<!--<script src="weui.min.js"></script>-->
+<!--<script src="example.js"></script>-->
+
+</body>
+</html>
